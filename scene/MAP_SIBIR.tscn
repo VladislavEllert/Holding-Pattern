@@ -39,6 +39,7 @@
 [ext_resource type="Texture2D" uid="uid://sd8ikbh8wmlv" path="res://objects/Bonus_button/bonus_line.png" id="36_nbub2"]
 [ext_resource type="Texture2D" uid="uid://8byctqbu54t" path="res://objects/Bonus_button/bonus_big_plane.png" id="37_b8co2"]
 [ext_resource type="Texture2D" uid="uid://jvtasude1xts" path="res://objects/Bonus_button/bonus_airport.png" id="38_ge5ey"]
+[ext_resource type="Script" uid="uid://bl5nsctnp02ke" path="res://scripts/Stop_sign.gd" id="40_32jyh"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4utxa"]
 content_margin_left = 20.0
@@ -1141,6 +1142,10 @@ position = Vector2(1688, -35)
 
 [node name="Marker2D45" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=1276518139]
 position = Vector2(796, 848)
+
+[node name="StopSign" type="Node2D" parent="." unique_id=89909998]
+visible = false
+script = ExtResource("40_32jyh")
 
 [connection signal="timeout" from="Timer" to="." method="_on_spawn_timer_timeout"]
 [connection signal="timeout" from="WeekTimer" to="." method="_on_week_timer_timeout"]

@@ -1,0 +1,1178 @@
+[gd_scene format=3 uid="uid://w3majmenhb7r"]
+
+[ext_resource type="Script" uid="uid://sp2ta70qytu6" path="res://scripts/MAP_IRAN.gd" id="1_1hfpl"]
+[ext_resource type="Texture2D" uid="uid://po01xbkyu0m5" path="res://objects/map3d.png" id="2_4vfsl"]
+[ext_resource type="Texture2D" uid="uid://cya118am2kgj2" path="res://objects/Vinetka.png" id="3_ts4wl"]
+[ext_resource type="Texture2D" uid="uid://i5602sbm708r" path="res://objects/Restart.png" id="4_ap85m"]
+[ext_resource type="Texture2D" uid="uid://bt80hh32ovxqk" path="res://objects/Menu/resume.png" id="5_smxhb"]
+[ext_resource type="Texture2D" uid="uid://dmiia6t0baedq" path="res://objects/Menu.png" id="5_tu5oa"]
+[ext_resource type="FontFile" uid="uid://bxu04q03hthlj" path="res://font/LFCurry.ttf" id="6_1yydk"]
+[ext_resource type="Texture2D" uid="uid://3sgxie4floa7" path="res://objects/Menu/restart.png" id="6_d42c7"]
+[ext_resource type="Texture2D" uid="uid://b6dnv4yl8clsx" path="res://objects/x.png" id="7_jad85"]
+[ext_resource type="Texture2D" uid="uid://bqlp7cbr35xaw" path="res://objects/Menu/menu.png" id="7_qfpcn"]
+[ext_resource type="Texture2D" uid="uid://d3hmyd7fm44gt" path="res://objects/Button_yellow.png" id="8_6pevr"]
+[ext_resource type="Texture2D" uid="uid://c32r7a0jfkk6t" path="res://objects/Button_blue.png" id="9_l8fvx"]
+[ext_resource type="Texture2D" uid="uid://ck4unu555lgo2" path="res://objects/Button_red.png" id="10_u63k7"]
+[ext_resource type="Texture2D" uid="uid://dirl28ic4l46t" path="res://objects/Fly_ghost.png" id="13_smxhb"]
+[ext_resource type="Texture2D" uid="uid://bvq3rqkkfv8j3" path="res://objects/Bonus_Plane.png" id="14_d42c7"]
+[ext_resource type="Texture2D" uid="uid://dn6f8p3t56spw" path="res://objects/Fly_BIG_ghost.png" id="16_54xju"]
+[ext_resource type="Texture2D" uid="uid://cw60yd0i354ir" path="res://objects/Bonus_bigPlane.png" id="17_r4a12"]
+[ext_resource type="Texture2D" uid="uid://c7ssbco7yvqas" path="res://objects/Man.png" id="20_j2cc6"]
+[ext_resource type="Texture2D" uid="uid://gegyo2242mki" path="res://objects/Bonus_airport.png" id="20_tu5oa"]
+[ext_resource type="Script" uid="uid://bsfmvdgi50hyw" path="res://scripts/Clock.gd" id="21_t388w"]
+[ext_resource type="Texture2D" uid="uid://0ha25hwlwpxt" path="res://objects/Clock/Stroke.png" id="22_2hy6f"]
+[ext_resource type="Texture2D" uid="uid://g6xobvgi7ovh" path="res://objects/black_circle.png" id="23_6pevr"]
+[ext_resource type="Texture2D" uid="uid://bs2ppxd53lrw8" path="res://objects/Clock/Circle.png" id="23_lqeuv"]
+[ext_resource type="Texture2D" uid="uid://deil82mhkcdr0" path="res://objects/Clock/Arrow.png" id="24_88v1a"]
+[ext_resource type="Texture2D" uid="uid://cl6kwmwss60c8" path="res://objects/Clock/Riski.png" id="25_og6mj"]
+[ext_resource type="Script" uid="uid://cp4srkpb0n5r7" path="res://scripts/Week_day.gd" id="26_prp3o"]
+[ext_resource type="Texture2D" uid="uid://cel3fq7keunyb" path="res://objects/Bonus_BG.png" id="27_lm8cf"]
+[ext_resource type="Texture2D" uid="uid://bc0trire67wgn" path="res://objects/Button_NULL.png" id="28_0q2b8"]
+[ext_resource type="Script" uid="uid://c44tchjyc16q0" path="res://scripts/Plane_add.gd" id="30_6pevr"]
+[ext_resource type="Script" uid="uid://d3pmmn6uqag7c" path="res://scripts/Big_plane_add.gd" id="32_u63k7"]
+[ext_resource type="Texture2D" uid="uid://bw7800lop1lnv" path="res://objects/Clock/Speed_1.0.png" id="33_jad85"]
+[ext_resource type="Script" uid="uid://c7hrg251scscx" path="res://scripts/Big_airport_add.gd" id="34_0q2b8"]
+[ext_resource type="Texture2D" uid="uid://bpeiunxuagah6" path="res://objects/Clock/Speed_2.0.png" id="34_6pevr"]
+[ext_resource type="Texture2D" uid="uid://cuwxliug2w6e3" path="res://objects/Bonus_button/bonus_plane.png" id="36_d42c7"]
+[ext_resource type="Texture2D" uid="uid://dhgy00ifet6ci" path="res://objects/Button_back_right.png" id="36_l8fvx"]
+[ext_resource type="Texture2D" uid="uid://sd8ikbh8wmlv" path="res://objects/Bonus_button/bonus_line.png" id="37_qfpcn"]
+[ext_resource type="Texture2D" uid="uid://blhwy3ru0t4nj" path="res://objects/pause_bg.png" id="37_u63k7"]
+[ext_resource type="Texture2D" uid="uid://8byctqbu54t" path="res://objects/Bonus_button/bonus_big_plane.png" id="38_54xju"]
+[ext_resource type="Texture2D" uid="uid://jvtasude1xts" path="res://objects/Bonus_button/bonus_airport.png" id="39_r4a12"]
+[ext_resource type="Script" uid="uid://bl5nsctnp02ke" path="res://scripts/Stop_sign.gd" id="40_smxhb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qmeo3"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_smxhb"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d42c7"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qfpcn"]
+content_margin_left = 20.0
+content_margin_top = 20.0
+content_margin_right = 20.0
+content_margin_bottom = 20.0
+bg_color = Color(0.1, 0.1, 0.1, 0.3)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[node name="MAP_IRAN" type="Node2D" unique_id=65367913]
+script = ExtResource("1_1hfpl")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1600277396]
+process_mode = 3
+position = Vector2(1374, 369)
+ignore_rotation = false
+zoom = Vector2(2.4, 2.4)
+
+[node name="Map" type="Sprite2D" parent="." unique_id=543851618]
+z_index = -1
+position = Vector2(1415, 401)
+scale = Vector2(1.10078, 1)
+texture = ExtResource("2_4vfsl")
+
+[node name="Timer" type="Timer" parent="." unique_id=465259474]
+wait_time = 25.0
+autostart = true
+
+[node name="WeekTimer" type="Timer" parent="." unique_id=1969759407]
+wait_time = 142.1
+autostart = true
+
+[node name="CountPlanePack" type="Control" parent="." unique_id=425050150]
+layout_mode = 3
+anchor_left = 0.473
+anchor_top = 0.909
+anchor_right = 0.527
+anchor_bottom = 1.0
+offset_left = 1211.6799
+offset_top = 1454.6799
+offset_right = 1211.6799
+offset_bottom = 1454.6799
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="TexturePlaneGhost" type="TextureRect" parent="CountPlanePack" unique_id=922726191]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -1673.6799
+offset_top = -1106.6799
+offset_right = -1493.6799
+offset_bottom = -956.67993
+texture = ExtResource("13_smxhb")
+
+[node name="TextureBigPlaneGhost" type="TextureRect" parent="CountPlanePack" unique_id=2067746771]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -1688.6799
+offset_top = -936.67993
+offset_right = -1477.48
+offset_bottom = -760.67993
+texture = ExtResource("16_54xju")
+
+[node name="CountBigAirportPack" type="Control" parent="." unique_id=381744348]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 34.0
+offset_top = 40.0
+offset_right = 130.0
+offset_bottom = 114.0
+
+[node name="TextureRect" type="TextureRect" parent="CountBigAirportPack" unique_id=1434658308]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.360784)
+layout_mode = 0
+offset_left = -456.0
+offset_top = 138.0
+offset_right = -336.0
+offset_bottom = 258.0
+texture = ExtResource("23_6pevr")
+
+[node name="PauseMenu" type="Control" parent="." unique_id=518320348]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 10.0
+offset_top = 411.0
+offset_right = 50.0
+offset_bottom = 451.0
+
+[node name="TextureRect" type="TextureRect" parent="PauseMenu" unique_id=185090960]
+z_index = 5
+layout_mode = 0
+offset_left = -137.0
+offset_top = -1691.0
+offset_right = 3004.0
+offset_bottom = 206.0
+texture = ExtResource("37_u63k7")
+
+[node name="Continue" type="Button" parent="PauseMenu" unique_id=1744643231]
+z_index = 6
+layout_mode = 0
+offset_left = 857.0
+offset_top = -1014.0
+offset_right = 1347.0
+offset_bottom = -907.0
+rotation = -0.20594884
+theme_override_font_sizes/font_size = 72
+icon = ExtResource("5_smxhb")
+flat = true
+
+[node name="Restart" type="Button" parent="PauseMenu" unique_id=251305847]
+process_mode = 2
+z_index = 5
+layout_mode = 0
+offset_left = 927.0
+offset_top = -968.0
+offset_right = 1474.0
+offset_bottom = -861.0
+rotation = -0.20594884
+pivot_offset = Vector2(150, 40)
+theme_override_font_sizes/font_size = 72
+icon = ExtResource("6_d42c7")
+flat = true
+expand_icon = true
+
+[node name="Menu" type="Button" parent="PauseMenu" unique_id=1061508788]
+process_mode = 2
+z_index = 6
+layout_mode = 0
+offset_left = 909.0001
+offset_top = -865.0
+offset_right = 1444.0
+offset_bottom = -771.6656
+rotation = -0.20594884
+pivot_offset = Vector2(150, 40)
+theme_override_font_sizes/font_size = 72
+icon = ExtResource("7_qfpcn")
+flat = true
+expand_icon = true
+
+[node name="GameOverUI" type="CanvasLayer" parent="." unique_id=916204876]
+process_mode = 3
+visible = false
+
+[node name="Control" type="Control" parent="GameOverUI" unique_id=1704321182]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Vinetka" type="TextureRect" parent="GameOverUI/Control" unique_id=1333909756]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("3_ts4wl")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverUI/Control" unique_id=1020255418]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 91
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 57
+theme_override_constants/margin_bottom = 35
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI/Control/MarginContainer" unique_id=1406191942]
+layout_mode = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOverUI/Control/MarginContainer/VBoxContainer" unique_id=2033567198]
+custom_minimum_size = Vector2(1168.545, 204.475)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.2, 0.176471, 0.2, 1)
+theme_override_colors/font_outline_color = Color(0.2, 0.176471, 0.2, 1)
+theme_override_constants/outline_size = 7
+theme_override_fonts/bold_font = ExtResource("6_1yydk")
+theme_override_font_sizes/normal_font_size = 149
+bbcode_enabled = true
+text = "Игра окончена"
+
+[node name="RichTextLabel2" type="RichTextLabel" parent="GameOverUI/Control/MarginContainer/VBoxContainer" unique_id=519312300]
+custom_minimum_size = Vector2(1289.07, 268.27)
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/default_color = Color(0.2, 0.176471, 0.2, 1)
+theme_override_font_sizes/normal_font_size = 38
+text = "Переполнение этого аэропорта привело к закрытию вашей авиакомпании.
+В вашей авиакомпании Перевезено пассажиров:"
+
+[node name="ScoreLabel" type="Label" parent="GameOverUI/Control/MarginContainer/VBoxContainer/RichTextLabel2" unique_id=750453582]
+layout_mode = 0
+offset_left = 971.0
+offset_top = 105.0
+offset_right = 1053.0
+offset_bottom = 173.0
+theme_override_colors/font_color = Color(0.2, 0.176471, 0.2, 1)
+theme_override_font_sizes/font_size = 39
+
+[node name="Control" type="Control" parent="GameOverUI/Control/MarginContainer/VBoxContainer" unique_id=754349371]
+custom_minimum_size = Vector2(0, 347.98)
+layout_mode = 2
+
+[node name="Restart" type="Button" parent="GameOverUI/Control/MarginContainer/VBoxContainer" unique_id=716103706]
+process_mode = 3
+custom_minimum_size = Vector2(0, 120)
+layout_mode = 2
+icon = ExtResource("4_ap85m")
+flat = true
+expand_icon = true
+
+[node name="Menu" type="Button" parent="GameOverUI/Control/MarginContainer/VBoxContainer" unique_id=1669871583]
+process_mode = 3
+custom_minimum_size = Vector2(0, 111.44)
+layout_mode = 2
+icon = ExtResource("5_tu5oa")
+flat = true
+expand_icon = true
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=638595728]
+
+[node name="Control" type="Control" parent="UI" unique_id=329431074]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="UI/Control" unique_id=303024509]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 115
+theme_override_constants/margin_top = 35
+theme_override_constants/margin_right = 49
+theme_override_constants/margin_bottom = 35
+
+[node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/MarginContainer" unique_id=1813128879]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="PauseButton" type="Button" parent="UI/Control/MarginContainer/HBoxContainer" unique_id=1346261376]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 1
+icon = ExtResource("36_l8fvx")
+flat = true
+
+[node name="ScorePack" type="Control" parent="UI/Control/MarginContainer/HBoxContainer" unique_id=1406589541]
+custom_minimum_size = Vector2(121.575, 116.155)
+layout_mode = 2
+size_flags_horizontal = 6
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="Man" type="TextureRect" parent="UI/Control/MarginContainer/HBoxContainer/ScorePack" unique_id=612995040]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -130.0
+offset_top = -65.0
+offset_bottom = 65.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+texture = ExtResource("20_j2cc6")
+
+[node name="Score" type="RichTextLabel" parent="UI/Control/MarginContainer/HBoxContainer/ScorePack/Man" unique_id=624782980]
+custom_minimum_size = Vector2(149.565, 88.555)
+layout_mode = 0
+offset_left = 108.0
+offset_top = 12.360001
+offset_right = 257.56506
+offset_bottom = 100.91501
+size_flags_horizontal = 4
+size_flags_vertical = 0
+size_flags_stretch_ratio = 0.0
+theme_override_colors/default_color = Color(0.180392, 0.156863, 0.180392, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/normal_font_size = 64
+bbcode_enabled = true
+text = "0"
+metadata/_edit_use_anchors_ = true
+
+[node name="Clock" type="Control" parent="UI/Control/MarginContainer/HBoxContainer" unique_id=515830548]
+custom_minimum_size = Vector2(162.275, 118.595)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 0
+mouse_filter = 2
+script = ExtResource("21_t388w")
+
+[node name="WeekDay" type="Label" parent="UI/Control/MarginContainer/HBoxContainer/Clock" unique_id=2071714547]
+z_index = 11
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = -51.725098
+offset_top = 37.0
+offset_right = -129.72519
+offset_bottom = 117.0
+grow_horizontal = 2
+pivot_offset = Vector2(27, 30)
+theme_override_colors/font_color = Color(0.180392, 0.156863, 0.180392, 1)
+theme_override_font_sizes/font_size = 42
+script = ExtResource("26_prp3o")
+
+[node name="Stroke" type="TextureRect" parent="UI/Control/MarginContainer/HBoxContainer/Clock" unique_id=1927510872]
+texture_filter = 4
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 0
+offset_left = 13.155
+offset_top = -4.42
+offset_right = 170.59518
+offset_bottom = 152.10175
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("22_2hy6f")
+expand_mode = 1
+
+[node name="Circle" type="TextureRect" parent="UI/Control/MarginContainer/HBoxContainer/Clock" unique_id=603664309]
+texture_filter = 4
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_left = 24.154907
+offset_top = 6.999999
+offset_right = 157.85071
+offset_bottom = 139.60869
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("23_lqeuv")
+
+[node name="Arrow" type="TextureRect" parent="UI/Control/MarginContainer/HBoxContainer/Clock" unique_id=1583743461]
+texture_filter = 4
+layout_mode = 0
+offset_left = 80.15503
+offset_top = 34.000004
+offset_right = 92.11206
+offset_bottom = 75.402824
+scale = Vector2(0.68, 0.92)
+pivot_offset = Vector2(5.78, 35.82)
+texture = ExtResource("24_88v1a")
+expand_mode = 1
+
+[node name="Riski" type="TextureRect" parent="UI/Control/MarginContainer/HBoxContainer/Clock" unique_id=321865332]
+texture_filter = 4
+custom_minimum_size = Vector2(120, 120)
+layout_mode = 0
+offset_left = 32.15503
+offset_top = 15.0
+offset_right = 152.15503
+offset_bottom = 135.0
+scale = Vector2(0.92, 0.92)
+texture = ExtResource("25_og6mj")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/Control/MarginContainer" unique_id=163240785]
+layout_mode = 2
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=450206045]
+custom_minimum_size = Vector2(14.94, 141.895)
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Button" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=2041571316]
+custom_minimum_size = Vector2(94.72, 71.715)
+layout_mode = 2
+size_flags_horizontal = 8
+icon = ExtResource("33_jad85")
+flat = true
+
+[node name="Button2" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=2087265123]
+custom_minimum_size = Vector2(103.265, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+icon = ExtResource("34_6pevr")
+flat = true
+
+[node name="Control2" type="Control" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=1786802215]
+custom_minimum_size = Vector2(14.94, 51.995)
+layout_mode = 2
+
+[node name="Yellow" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=741780236]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+icon = ExtResource("8_6pevr")
+flat = true
+
+[node name="Blue" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=499459395]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+icon = ExtResource("9_l8fvx")
+flat = true
+
+[node name="Red" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=1837008621]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+icon = ExtResource("10_u63k7")
+flat = true
+
+[node name="LightBlue" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=1055967704]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/icon_disabled_color = Color(0.8901961, 0.8901961, 0.8901961, 1)
+theme_override_icons/icon = ExtResource("28_0q2b8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qmeo3")
+disabled = true
+flat = true
+
+[node name="Green" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=616691583]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/icon_disabled_color = Color(0.8901961, 0.8901961, 0.8901961, 1)
+theme_override_icons/icon = ExtResource("28_0q2b8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_smxhb")
+disabled = true
+flat = true
+
+[node name="Pink" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=349626819]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/icon_disabled_color = Color(0.8901961, 0.8901961, 0.8901961, 1)
+theme_override_icons/icon = ExtResource("28_0q2b8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_d42c7")
+disabled = true
+flat = true
+
+[node name="Oragne" type="Button" parent="UI/Control/MarginContainer/VBoxContainer" unique_id=1001509500]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 4
+theme_override_colors/icon_disabled_color = Color(0.8901961, 0.8901961, 0.8901961, 1)
+theme_override_icons/icon = ExtResource("28_0q2b8")
+theme_override_styles/disabled = SubResource("StyleBoxFlat_qfpcn")
+disabled = true
+flat = true
+
+[node name="BonusButton" type="VBoxContainer" parent="UI/Control/MarginContainer" unique_id=1464655081]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 4
+theme_override_constants/separation = 45
+
+[node name="PlaneBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=1409508029]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("14_d42c7")
+stretch_mode = 1
+script = ExtResource("30_6pevr")
+
+[node name="BigPlaneBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=591798212]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("17_r4a12")
+script = ExtResource("32_u63k7")
+
+[node name="AirportBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=1538466439]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("20_tu5oa")
+script = ExtResource("34_0q2b8")
+
+[node name="CountPlaneZero" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=2017640984]
+layout_mode = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="BonusPlane" type="Control" parent="UI" unique_id=523576973]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/BonusPlane" unique_id=193016612]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_lm8cf")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/BonusPlane" unique_id=747889183]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/BonusPlane/HBoxContainer" unique_id=1543627032]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Week" type="Label" parent="UI/BonusPlane/HBoxContainer" unique_id=426809360]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 145
+text = "Неделя 1"
+
+[node name="Label3" type="Label" parent="UI/BonusPlane/HBoxContainer" unique_id=616779962]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 58
+text = "Что бы вы хотели приобрести для
+вашей авиакомпании?"
+
+[node name="Control2" type="Control" parent="UI/BonusPlane/HBoxContainer" unique_id=1525105282]
+custom_minimum_size = Vector2(0, 68.345)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="UI/BonusPlane" unique_id=1152424465]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -77.5
+offset_top = -50.0
+offset_right = 77.5
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+pivot_offset = Vector2(73.405, 233.58)
+
+[node name="Label3" type="Label" parent="UI/BonusPlane/VBoxContainer2" unique_id=1921896178]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Самолёт"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UI/BonusPlane" unique_id=934347258]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -95.0
+offset_top = -95.0
+offset_right = 95.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2, 2)
+pivot_offset = Vector2(90.64, -36.925)
+
+[node name="BonusPlane" type="Button" parent="UI/BonusPlane/VBoxContainer" unique_id=686641149]
+layout_mode = 2
+icon = ExtResource("36_d42c7")
+flat = true
+
+[node name="BonusPack1" type="Control" parent="UI" unique_id=1520631920]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/BonusPack1" unique_id=1941399980]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_lm8cf")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/BonusPack1" unique_id=832592599]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/BonusPack1/HBoxContainer" unique_id=133553025]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Week" type="Label" parent="UI/BonusPack1/HBoxContainer" unique_id=1014175749]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 145
+text = "Неделя 1"
+
+[node name="Label3" type="Label" parent="UI/BonusPack1/HBoxContainer" unique_id=146302542]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 58
+text = "Что бы вы хотели приобрести для
+вашей авиакомпании?"
+
+[node name="Control2" type="Control" parent="UI/BonusPack1/HBoxContainer" unique_id=479056127]
+custom_minimum_size = Vector2(0, 68.345)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="UI/BonusPack1" unique_id=295426722]
+custom_minimum_size = Vector2(0, 1)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -357.5
+offset_top = -119.869995
+offset_right = 357.5
+offset_bottom = 70.13025
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.005, 2.005)
+pivot_offset = Vector2(214.85, 359.575)
+theme_override_constants/separation = 224
+
+[node name="Label5" type="Label" parent="UI/BonusPack1/VBoxContainer2" unique_id=1267666492]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Линия"
+
+[node name="Label4" type="Label" parent="UI/BonusPack1/VBoxContainer2" unique_id=1311864770]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Большой самолёт"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/BonusPack1" unique_id=1065786806]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -95.0
+offset_right = 324.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.005, 2.005)
+pivot_offset = Vector2(319.895, 0)
+theme_override_constants/separation = 268
+
+[node name="BonusLine" type="Button" parent="UI/BonusPack1/VBoxContainer" unique_id=1862558590]
+layout_mode = 2
+icon = ExtResource("37_qfpcn")
+flat = true
+
+[node name="Bonus_big_plane" type="Button" parent="UI/BonusPack1/VBoxContainer" unique_id=1491074173]
+layout_mode = 2
+icon = ExtResource("38_54xju")
+flat = true
+
+[node name="BonusPack2" type="Control" parent="UI" unique_id=2077597810]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/BonusPack2" unique_id=1967803276]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_lm8cf")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/BonusPack2" unique_id=1910086768]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/BonusPack2/HBoxContainer" unique_id=2015913066]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Week" type="Label" parent="UI/BonusPack2/HBoxContainer" unique_id=1534073881]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 145
+text = "Неделя 1"
+
+[node name="Label3" type="Label" parent="UI/BonusPack2/HBoxContainer" unique_id=1788942418]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 58
+text = "Что бы вы хотели приобрести для
+вашей авиакомпании?"
+
+[node name="Control2" type="Control" parent="UI/BonusPack2/HBoxContainer" unique_id=1514933982]
+custom_minimum_size = Vector2(0, 68.345)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="UI/BonusPack2" unique_id=1020474556]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -391.5
+offset_top = -119.869995
+offset_right = 391.5
+offset_bottom = 70.130005
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.005, 2.005)
+pivot_offset = Vector2(214.85, 359.575)
+theme_override_constants/separation = 224
+
+[node name="Label5" type="Label" parent="UI/BonusPack2/VBoxContainer2" unique_id=2101949718]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Линия"
+
+[node name="Label4" type="Label" parent="UI/BonusPack2/VBoxContainer2" unique_id=751448457]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Расширенный аэропорт"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/BonusPack2" unique_id=759115639]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -95.0
+offset_right = 324.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.005, 2.005)
+pivot_offset = Vector2(319.895, 0)
+theme_override_constants/separation = 268
+
+[node name="BonusLine" type="Button" parent="UI/BonusPack2/VBoxContainer" unique_id=207295912]
+layout_mode = 2
+icon = ExtResource("37_qfpcn")
+flat = true
+
+[node name="BonusBigAirport" type="Button" parent="UI/BonusPack2/VBoxContainer" unique_id=1257204525]
+layout_mode = 2
+icon = ExtResource("39_r4a12")
+flat = true
+
+[node name="BonusPack3" type="Control" parent="UI" unique_id=1106224316]
+process_mode = 2
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="UI/BonusPack3" unique_id=1342641669]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("27_lm8cf")
+
+[node name="HBoxContainer" type="VBoxContainer" parent="UI/BonusPack3" unique_id=458099964]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="Control" parent="UI/BonusPack3/HBoxContainer" unique_id=739097860]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="Week" type="Label" parent="UI/BonusPack3/HBoxContainer" unique_id=1925673614]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 145
+text = "Неделя 1"
+
+[node name="Label3" type="Label" parent="UI/BonusPack3/HBoxContainer" unique_id=285534643]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_font_sizes/font_size = 58
+text = "Что бы вы хотели приобрести для
+вашей авиакомпании?"
+
+[node name="Control2" type="Control" parent="UI/BonusPack3/HBoxContainer" unique_id=754842638]
+custom_minimum_size = Vector2(0, 68.345)
+layout_mode = 2
+
+[node name="VBoxContainer2" type="HBoxContainer" parent="UI/BonusPack3" unique_id=232581483]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -427.0
+offset_top = -119.869995
+offset_right = 427.0
+offset_bottom = 70.130005
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2.005, 2.005)
+pivot_offset = Vector2(169.52, 359.575)
+pivot_offset_ratio = Vector2(0.225, 0)
+theme_override_constants/separation = 86
+
+[node name="Label5" type="Label" parent="UI/BonusPack3/VBoxContainer2" unique_id=1448277255]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Большой самолет"
+
+[node name="Label4" type="Label" parent="UI/BonusPack3/VBoxContainer2" unique_id=221735526]
+modulate = Color(0.160784, 0.137255, 0.156863, 1)
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "Расширенный аэропорт"
+
+[node name="VBoxContainer" type="HBoxContainer" parent="UI/BonusPack3" unique_id=214609397]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -324.0
+offset_top = -95.0
+offset_right = 324.0
+offset_bottom = 95.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(2.005, 2.005)
+pivot_offset = Vector2(319.895, 0)
+theme_override_constants/separation = 268
+
+[node name="BonusBigPlane" type="Button" parent="UI/BonusPack3/VBoxContainer" unique_id=441667134]
+layout_mode = 2
+icon = ExtResource("38_54xju")
+flat = true
+
+[node name="BonusBigAirport" type="Button" parent="UI/BonusPack3/VBoxContainer" unique_id=1336784197]
+layout_mode = 2
+icon = ExtResource("39_r4a12")
+flat = true
+
+[node name="ClearData" type="Button" parent="UI" unique_id=602788293]
+visible = false
+z_index = -1
+offset_left = 2290.0
+offset_top = 384.0
+offset_right = 2373.0
+offset_bottom = 467.0
+size_flags_horizontal = 8
+icon = ExtResource("7_jad85")
+flat = true
+expand_icon = true
+
+[node name="AirportSpawn" type="Node2D" parent="." unique_id=760523429]
+metadata/_edit_lock_ = true
+
+[node name="Zone0" type="Node2D" parent="AirportSpawn" unique_id=211188203]
+
+[node name="Marker2D13" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=759523272]
+position = Vector2(1363, 381)
+
+[node name="Marker2D18" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=787454299]
+position = Vector2(1329, 554)
+
+[node name="Marker2D21" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=473634745]
+position = Vector2(1635, 343)
+
+[node name="Marker2D42" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=1095882459]
+position = Vector2(1716, 265)
+
+[node name="Marker2D24" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=1293887816]
+position = Vector2(1145, 530)
+
+[node name="Zone1" type="Node2D" parent="AirportSpawn" unique_id=540331357]
+
+[node name="Marker2D39" type="Marker2D" parent="AirportSpawn/Zone1" unique_id=594047598]
+position = Vector2(1213, 308)
+
+[node name="Marker2D4" type="Marker2D" parent="AirportSpawn/Zone1" unique_id=646696511]
+position = Vector2(1581, 534)
+
+[node name="Marker2D15" type="Marker2D" parent="AirportSpawn/Zone1" unique_id=1790927512]
+position = Vector2(1817, 400)
+
+[node name="Marker2D" type="Marker2D" parent="AirportSpawn/Zone1" unique_id=783210254]
+position = Vector2(1067, 380)
+
+[node name="Zone2" type="Node2D" parent="AirportSpawn" unique_id=231204320]
+
+[node name="Marker2D6" type="Marker2D" parent="AirportSpawn/Zone2" unique_id=952381691]
+position = Vector2(974, 599)
+
+[node name="Marker2D36" type="Marker2D" parent="AirportSpawn/Zone2" unique_id=1388887543]
+position = Vector2(1483, 217)
+
+[node name="Marker2D26" type="Marker2D" parent="AirportSpawn/Zone2" unique_id=1440066947]
+position = Vector2(993, 194)
+
+[node name="Marker2D22" type="Marker2D" parent="AirportSpawn/Zone2" unique_id=9847681]
+position = Vector2(1838, 512)
+
+[node name="Marker2D" type="Marker2D" parent="AirportSpawn/Zone2" unique_id=1468210659]
+position = Vector2(1256, 163)
+
+[node name="Zone3" type="Node2D" parent="AirportSpawn" unique_id=1516111750]
+
+[node name="Marker2D31" type="Marker2D" parent="AirportSpawn/Zone3" unique_id=521154180]
+position = Vector2(1636, 124)
+
+[node name="Marker2D35" type="Marker2D" parent="AirportSpawn/Zone3" unique_id=75592907]
+position = Vector2(1869, 159)
+
+[node name="Marker2D20" type="Marker2D" parent="AirportSpawn/Zone3" unique_id=1782396966]
+position = Vector2(1482, 633)
+
+[node name="Marker2D7" type="Marker2D" parent="AirportSpawn/Zone3" unique_id=890090740]
+position = Vector2(1899, 308)
+
+[node name="Marker2D29" type="Marker2D" parent="AirportSpawn/Zone3" unique_id=1469402323]
+position = Vector2(822, 536)
+
+[node name="Zone4" type="Node2D" parent="AirportSpawn" unique_id=606329077]
+
+[node name="Marker2D8" type="Marker2D" parent="AirportSpawn/Zone4" unique_id=1370434199]
+position = Vector2(1445, 63)
+
+[node name="Marker2D30" type="Marker2D" parent="AirportSpawn/Zone4" unique_id=490752699]
+position = Vector2(667, 644)
+
+[node name="Marker2D28" type="Marker2D" parent="AirportSpawn/Zone4" unique_id=904507508]
+position = Vector2(787, 314)
+
+[node name="Marker2D17" type="Marker2D" parent="AirportSpawn/Zone4" unique_id=509980287]
+position = Vector2(882, 10)
+
+[node name="Marker2D25" type="Marker2D" parent="AirportSpawn/Zone4" unique_id=1473245047]
+position = Vector2(1257, 713)
+
+[node name="Zone5" type="Node2D" parent="AirportSpawn" unique_id=1334429940]
+
+[node name="Marker2D14" type="Marker2D" parent="AirportSpawn/Zone5" unique_id=994574809]
+position = Vector2(2134, 144)
+
+[node name="Marker2D38" type="Marker2D" parent="AirportSpawn/Zone5" unique_id=435252595]
+position = Vector2(576, 224)
+
+[node name="Marker2D33" type="Marker2D" parent="AirportSpawn/Zone5" unique_id=1339157466]
+position = Vector2(483, 799)
+
+[node name="Marker2D40" type="Marker2D" parent="AirportSpawn/Zone5" unique_id=1304664460]
+position = Vector2(1067, 3)
+
+[node name="Marker2D3" type="Marker2D" parent="AirportSpawn/Zone5" unique_id=1675830109]
+position = Vector2(1576, 820)
+
+[node name="Zone6" type="Node2D" parent="AirportSpawn" unique_id=1071603465]
+
+[node name="Marker2D37" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=1035062097]
+position = Vector2(534, 411)
+
+[node name="Marker2D32" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=521821784]
+position = Vector2(1353, -106)
+
+[node name="Marker2D23" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=1767189783]
+position = Vector2(2103, 449)
+
+[node name="Marker2D10" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=2080071123]
+position = Vector2(731, -92)
+
+[node name="Marker2D3" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=79643693]
+position = Vector2(430, -123)
+
+[node name="Marker2D34" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=1957934731]
+position = Vector2(1843, 685)
+
+[node name="Marker2D45" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=1313970943]
+position = Vector2(952, 826)
+
+[node name="Marker2D19" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=417267570]
+position = Vector2(1845, -105)
+
+[node name="Marker2D" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=458103228]
+position = Vector2(515, -3)
+
+[node name="Marker2D2" type="Marker2D" parent="AirportSpawn/Zone6" unique_id=1848814095]
+position = Vector2(728, 854)
+
+[node name="StopSign" type="Node2D" parent="." unique_id=809126438]
+visible = false
+script = ExtResource("40_smxhb")
+
+[connection signal="timeout" from="Timer" to="." method="_on_spawn_timer_timeout"]
+[connection signal="timeout" from="WeekTimer" to="." method="_on_week_timer_timeout"]
+[connection signal="pressed" from="PauseMenu/Continue" to="." method="_on_continue_pressed"]
+[connection signal="pressed" from="PauseMenu/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="PauseMenu/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="GameOverUI/Control/MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverUI/Control/MarginContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
+[connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/Yellow" to="." method="_on_yb_pressed"]
+[connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/Blue" to="." method="_on_bb_pressed"]
+[connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/Red" to="." method="_on_rb_pressed"]
+[connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/LightBlue" to="." method="_on_lbb_pressed"]
+[connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/Green" to="." method="_on_gb_pressed"]
+[connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/Pink" to="." method="_on_pb_pressed"]
+[connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/Oragne" to="." method="_on_ob_pressed"]
+[connection signal="pressed" from="UI/BonusPlane/VBoxContainer/BonusPlane" to="." method="_on_bonus_plane_pressed"]
+[connection signal="pressed" from="UI/BonusPack1/VBoxContainer/BonusLine" to="." method="_on_bonus_line_pressed"]
+[connection signal="pressed" from="UI/BonusPack1/VBoxContainer/Bonus_big_plane" to="." method="_on_bonus_big_plane_pressed"]
+[connection signal="pressed" from="UI/BonusPack2/VBoxContainer/BonusLine" to="." method="_on_bonus_line_pressed"]
+[connection signal="pressed" from="UI/BonusPack2/VBoxContainer/BonusBigAirport" to="." method="_on_bonus_big_airport_pressed"]
+[connection signal="pressed" from="UI/BonusPack3/VBoxContainer/BonusBigPlane" to="." method="_on_bonus_big_plane_pressed"]
+[connection signal="pressed" from="UI/BonusPack3/VBoxContainer/BonusBigAirport" to="." method="_on_bonus_big_airport_pressed"]
+[connection signal="pressed" from="UI/ClearData" to="." method="_on_clear_data_pressed"]

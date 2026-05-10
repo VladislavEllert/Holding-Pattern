@@ -13,6 +13,7 @@ var _is_out_of_colors: bool
 @onready var vinetka = $GameOverUI/Control/Vinetka
 @onready var score_final_label = $GameOverUI/Control/MarginContainer/VBoxContainer/RichTextLabel2/ScoreLabel
 @onready var main_pack = $GameOverUI/Control
+@onready var stop_sign = $StopSign
 
 @onready var buttons = [$GameOverUI/Control/MarginContainer/VBoxContainer/Restart, $GameOverUI/Control/MarginContainer/VBoxContainer/Menu]
 
@@ -124,7 +125,7 @@ func _ready():
 	add_child(phase_timer)
 	
 	for i in range(3):
-		spawn_airport()
+		spawn_airport(current_phase)
 	
 	score_pack.scale = Vector2.ZERO
 	score_pack.modulate.a = 0
@@ -144,11 +145,43 @@ func _process(delta):
 	camera.position = camera.position.lerp(target_camera_pos, camera_lerp_speed * delta)
 	camera.rotation = lerp_angle(camera.rotation, target_camera_rotation, camera_speed * delta)
 	if is_drawing and selected_airport and is_instance_valid(pred_line):
-		var current_color = GameData.lines_data["current hex color"]
-		pred_line.default_color = Color(current_color.r, current_color.g, current_color.b)
+		var p0 = selected_airport.global_position
+		var p2 = get_global_mouse_position()
+		var mid = (p0 + p2) / 2
+		var offset
+		if p2.x < p0.x:
+			offset = (p2 - p0).rotated(PI/2).normalized() * (p0.distance_to(p2) * 0.2)
+		else: 
+			offset = (p0 - p2).rotated(PI/2).normalized() * (p0.distance_to(p2) * 0.2)
 		
-		line_draw(selected_airport.global_position, get_global_mouse_position())
-		if _is_out_of_colors: check_airport()
+		var control_relative = (mid + offset) - p0
+		
+		var temp_curve = Curve2D.new()
+		temp_curve.add_point(p0, Vector2.ZERO, control_relative)
+		temp_curve.add_point(p2)
+		
+		pred_line.points = temp_curve.get_baked_points()
+	
+		if _is_out_of_colors:
+			stop_sign.visible = true
+			
+			var mid_t = temp_curve.get_baked_length() * 0.5
+			var mid_pos = temp_curve.sample_baked(mid_t)
+			
+			stop_sign.global_position = mid_pos
+			
+			var next_t = temp_curve.sample_baked(mid_t + 2.0)
+			stop_sign.rotation = (next_t - mid_pos).angle()
+			
+			pred_line.default_color = Color.GRAY
+		else:
+			stop_sign.visible = false
+			pred_line.default_color = GameData.lines_data["current hex color"]
+			check_airport()
+	else:
+		if is_instance_valid(stop_sign):
+			stop_sign.visible = false
+			
 	if camera:
 		var zoom_speed = 0.06 ## скорость камеры
 		camera.zoom = camera.zoom.lerp(target_zoom, zoom_speed * delta)
@@ -312,7 +345,7 @@ func stop_draw():
 	pred_line.clear_points()
 
 
-func spawn_airport():
+func spawn_airport(current_phase):
 	if active_airport.is_empty(): return
 	var inst = airport_scene.instantiate()
 	inst.position = active_airport.pop_back()
@@ -320,7 +353,7 @@ func spawn_airport():
 	if not start_shapes.is_empty():
 		inst.forced_shape = start_shapes.pop_front()
 	else:
-		if randf() < special_spawn_chance:
+		if randf() < special_spawn_chance and current_phase >= 3:
 			var pool = []
 			var existing_types = []
 			for a in get_tree().get_nodes_in_group("airports"):
@@ -637,7 +670,7 @@ func _on_button_unhovered():
 		tween.tween_property(btn, "modulate", alpha_full, duration)
 
 func _on_spawn_timer_timeout():
-	spawn_airport()
+	spawn_airport(current_phase)
 
 func clear_data(current_color):
 	for plane in GameData.lines_data[current_color + "_planes"]:
