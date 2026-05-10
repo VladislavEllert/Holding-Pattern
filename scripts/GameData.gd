@@ -99,6 +99,7 @@ var lines_data = {
 }
 
 var color_values = {
+	"grey": Color(0.596, 0.596, 0.596, 1.0),
 	"yellow": Color(1.0, 0.812, 0.039, 1.0),
 	"blue": Color(0.0, 0.323, 0.983, 1.0),
 	"red": Color(1.0, 0.161, 0.118, 1.0),

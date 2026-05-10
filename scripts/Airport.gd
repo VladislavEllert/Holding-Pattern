@@ -4,7 +4,7 @@ extends Area2D
 
 var CLICK_RADIUS : float = 40.0
 
-signal airport_selected(airport)
+signal airport_selected(airport, is_out_of_colors)
 signal end_game(airport)
 
 const Circle = preload("res://objects/point_circle.png")
@@ -225,4 +225,9 @@ func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> voi
 				break
 		if permision:
 			activate_pulse()
-			airport_selected.emit(self)
+			airport_selected.emit(self, false)
+		else:
+			lines_data["current color"] = "grey"
+			lines_data["current hex color"] = GameData.color_values["grey"]
+			activate_pulse()
+			airport_selected.emit(self, true)

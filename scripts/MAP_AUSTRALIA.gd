@@ -3,6 +3,7 @@ extends Node2D
 var airport_scene = load("res://scene/Airport.tscn")
 var route_scene = load("res://scene/Route.tscn")
 
+var _is_out_of_colors: bool
 
 @onready var spawn_points := $AirportSpawn
 @onready var camera := $Camera2D
@@ -148,7 +149,7 @@ func _process(delta):
 		pred_line.default_color = Color(current_color.r, current_color.g, current_color.b)
 		
 		line_draw(selected_airport.global_position, get_global_mouse_position())
-		check_airport()
+		if _is_out_of_colors: check_airport()
 	if camera:
 		var zoom_speed = 0.06 ## скорость камеры
 		camera.zoom = camera.zoom.lerp(target_zoom, zoom_speed * delta)
@@ -360,21 +361,19 @@ func set_line_stroke(is_active: bool):
 			
 
 
-func _on_airport_selected(airport):
+func _on_airport_selected(airport, is_out_of_colors):
 	var current_color = lines_data["current color"]
-	if lines_data["in_" + lines_data["current color"]] and airport == lines_data[lines_data["current color"] + "_airports"][0]:
-		var a = lines_data[lines_data["current color"] + "_airports"][0]
-		lines_data[lines_data["current color"] + "_airports"][0] = lines_data[lines_data["current color"] + "_airports"][-1]
-		lines_data[lines_data["current color"] + "_airports"][-1] = a
 	
 	selected_airport = airport
 	is_drawing = true
 	selected_airport.draw_stroke(true)
 	SoundManager.play("click_airport")
+	_is_out_of_colors = is_out_of_colors
 	
-	for a in lines_data[current_color + "_airports"]:
-		if is_instance_valid(a):
-			a.draw_stroke(true)
+	if not is_out_of_colors: 
+		for a in lines_data[current_color + "_airports"]:
+			if is_instance_valid(a):
+				a.draw_stroke(true)
 
 func _on_handle_grabbed(route, is_start):
 	lines_data["current color"] = route.route_data["color"]
