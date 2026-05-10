@@ -50,7 +50,12 @@ var start_shapes = [
 	GameData.ShapeType.TRIANGLE
 ]
 
-
+var special_shapes = [
+	GameData.ShapeType.PENTAGON,
+	GameData.ShapeType.GEM,
+	GameData.ShapeType.PLUS
+]
+var special_spawn_chance = 0.15
 
 var all_zones: Array = []
 var active_airport: Array[Vector2] = []
@@ -209,7 +214,7 @@ func unlock_next_phase():
 				new_speed = 3.0
 				
 			if current_phase == 3:
-				new_speed = 2.0
+				new_speed = 1.7
 				
 			if current_phase == 4:
 				new_speed = 1.0
@@ -314,7 +319,23 @@ func spawn_airport():
 	
 	if not start_shapes.is_empty():
 		inst.forced_shape = start_shapes.pop_front()
-		
+	else:
+		if randf() < special_spawn_chance:
+			var pool = []
+			var existing_types = []
+			for a in get_tree().get_nodes_in_group("airports"):
+				existing_types.append(a.my_shape)
+			
+			for s_type in special_shapes:
+				if existing_types.has(s_type):
+					pool.append(s_type)
+				else:
+					for i in range(4):
+						pool.append(s_type)
+			inst.forced_shape = pool.pick_random()
+		else:
+			inst.forced_shape = [GameData.ShapeType.CIRCLE, GameData.ShapeType.SQUARE, GameData.ShapeType.TRIANGLE].pick_random()
+			
 	inst.add_to_group("airports")
 	inst.airport_selected.connect(_on_airport_selected)
 	inst.end_game.connect(game_over)
@@ -588,7 +609,7 @@ func _on_restart_pressed():
 	GameData.big_planes = 1
 	GameData.current_week = 1
 	GameData.lines_data["current hex color"] = Color(1.0, 0.812, 0.039, 1.0)
-	get_tree().change_scene_to_file("res://scene/MAP_IRAN.tscn")
+	get_tree().change_scene_to_file("res://scene/MAP_AUSTRALIA.tscn")
 	GameData.start_planes = 3
 
 func _on_menu_pressed():

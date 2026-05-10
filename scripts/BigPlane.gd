@@ -201,26 +201,53 @@ func _draw():
 		var pos = start_offset + Vector2(i * spacing, 0)
 		
 		match shape:
-			GameData.ShapeType.CIRCLE:
-				draw_circle(pos, p_size, p_color,32.0)
-			
-			GameData.ShapeType.SQUARE:
-				var rect = Rect2(pos - Vector2(p_size, p_size), Vector2(p_size*2, p_size*2))
-				draw_rect(rect, p_color, true)
-			
-			GameData.ShapeType.TRIANGLE:
-				var side = p_size * 2.2
-				var h = side * sqrt(3) / 2
-				
-				var points = PackedVector2Array([
-					pos + Vector2(0, -h/2),
-					pos + Vector2(side/2, h/2),
-					pos + Vector2(-side/2, h/2)
-				])
-				draw_colored_polygon(points, p_color, PackedVector2Array(), null)
-				
-				points.append(points[0])
-				draw_polyline(points, p_color, 0.5, true)
+				GameData.ShapeType.CIRCLE:
+					draw_circle(pos, p_size, p_color, 32.0)
+					
+				GameData.ShapeType.SQUARE:
+					var s = p_size
+					var rect = Rect2(pos - Vector2(s, s), Vector2(s * 2, s * 2))
+					draw_rect(rect, p_color, true)
+					
+				GameData.ShapeType.TRIANGLE:
+					var size = p_size * 2.2
+					var h = size * sqrt(3) / 2
+					var points = PackedVector2Array([
+						pos + Vector2(0, -h/2),
+						pos + Vector2(size/2, h/2),
+						pos + Vector2(-size/2, h/2)
+					])
+					draw_colored_polygon(points, p_color)
+					
+				GameData.ShapeType.PENTAGON:
+					var size = p_size * 1.2
+					var points = PackedVector2Array()
+					for c in range(5):
+						var angle = deg_to_rad(c * 72 - 90)
+						points.append(pos + Vector2(cos(angle), sin(angle)) * size)
+					draw_colored_polygon(points, p_color)
+					
+				GameData.ShapeType.GEM:
+					var sw = p_size * 1.0
+					var sh = p_size * 1.5
+					var points = PackedVector2Array([
+						pos + Vector2(0, -sh),
+						pos + Vector2(sw, 0),
+						pos + Vector2(0, sh),
+						pos + Vector2(-sw, 0)
+					])
+					draw_colored_polygon(points, p_color)
+					
+				GameData.ShapeType.PLUS:
+					var s = p_size * 0.8
+					var t = s * 0.3
+					var points = PackedVector2Array([
+						pos + Vector2(-t, -s), pos + Vector2(t, -s), pos + Vector2(t, -t),
+						pos + Vector2(s, -t),  pos + Vector2(s, t),  pos + Vector2(t, t),
+						pos + Vector2(t, s),   pos + Vector2(-t, s), pos + Vector2(-t, t),
+						pos + Vector2(-s, t),  pos + Vector2(-s, -t), pos + Vector2(-t, -t)
+					])
+					draw_colored_polygon(points, p_color)
 				
 				
 func _take_plane():

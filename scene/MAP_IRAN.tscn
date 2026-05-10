@@ -328,9 +328,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
-theme_override_constants/margin_left = 35
+theme_override_constants/margin_left = 115
 theme_override_constants/margin_top = 35
-theme_override_constants/margin_right = 35
+theme_override_constants/margin_right = 49
 theme_override_constants/margin_bottom = 35
 
 [node name="HBoxContainer" type="HBoxContainer" parent="UI/Control/MarginContainer" unique_id=1813128879]
@@ -1074,7 +1074,7 @@ position = Vector2(1636, 124)
 position = Vector2(1869, 159)
 
 [node name="Marker2D20" type="Marker2D" parent="AirportSpawn/Zone3" unique_id=1782396966]
-position = Vector2(1485, 652)
+position = Vector2(1482, 633)
 
 [node name="Marker2D7" type="Marker2D" parent="AirportSpawn/Zone3" unique_id=890090740]
 position = Vector2(1899, 308)
@@ -1153,6 +1153,8 @@ position = Vector2(728, 854)
 [connection signal="pressed" from="PauseMenu/Continue" to="." method="_on_continue_pressed"]
 [connection signal="pressed" from="PauseMenu/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="PauseMenu/Menu" to="." method="_on_menu_pressed"]
+[connection signal="pressed" from="GameOverUI/Control/MarginContainer/VBoxContainer/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="GameOverUI/Control/MarginContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
 [connection signal="pressed" from="UI/Control/MarginContainer/HBoxContainer/PauseButton" to="." method="_on_pause_button_pressed"]
 [connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/Yellow" to="." method="_on_yb_pressed"]
 [connection signal="pressed" from="UI/Control/MarginContainer/VBoxContainer/Blue" to="." method="_on_bb_pressed"]

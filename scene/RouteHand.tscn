@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bul3wf5tvs4fa" path="res://scripts/Route_hand.gd" id="1_yqpl1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqpl1"]
-size = Vector2(65, 43)
+size = Vector2(65, 49)
 
 [node name="RouteHand" type="Area2D" unique_id=2139742304]
 script = ExtResource("1_yqpl1")

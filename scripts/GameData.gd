@@ -3,14 +3,14 @@ extends Node
 var start_planes: int = 3
 var big_planes: int = 1
 var big_airports: int = 1
-var max_passengers: int = 6
-var big_max_passengers: int = 10
+var max_passengers: int = 60
+var big_max_passengers: int = 100
 var current_week: int = 1
 
 var high_score: int = 0
 const SAVE_PATH = "user://savegame.cfg"
 
-enum ShapeType { CIRCLE, SQUARE, TRIANGLE }
+enum ShapeType { CIRCLE, SQUARE, TRIANGLE, PENTAGON, GEM, PLUS}
 
 var lines_data = {
 	"current color" : "yellow",

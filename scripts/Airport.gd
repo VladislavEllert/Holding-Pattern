@@ -10,6 +10,9 @@ signal end_game(airport)
 const Circle = preload("res://objects/point_circle.png")
 const Square = preload("res://objects/point_square.png")
 const Triangle = preload("res://objects/point_triangle.png")
+const PENTAGON = preload("res://objects/point_pentagon.png")
+const GEM = preload("res://objects/point_gem.png")
+const PLUS = preload("res://objects/point_cross.png")
 
 var my_shape: GameData.ShapeType
 var forced_shape = null
@@ -50,6 +53,13 @@ func _ready():
 			sprite.texture = Square
 		GameData.ShapeType.TRIANGLE:
 			sprite.texture = Triangle
+			
+		GameData.ShapeType.PENTAGON:
+			sprite.texture = PENTAGON
+		GameData.ShapeType.GEM:
+			sprite.texture = GEM
+		GameData.ShapeType.PLUS:
+			sprite.texture = PLUS
 	
 	spawn_animation()
 	
@@ -133,6 +143,37 @@ func _draw_stroke(radius: float, color: Color, line_width: float):
 				Vector2(11, 8) * sf,
 				Vector2(-11, 8) * sf,
 				Vector2(0, -12) * sf
+			])
+			draw_polyline(points, color, line_width, true)
+			
+		GameData.ShapeType.PENTAGON:
+			var points = PackedVector2Array()
+			for i in range(6):
+				var angle = deg_to_rad(i * 72 - 90)
+				points.append(Vector2(cos(angle), sin(angle)) * radius)
+			draw_polyline(points, color, line_width, true)
+
+		GameData.ShapeType.GEM:
+			var sw = radius * 0.8
+			var sh = radius * 0.9
+			var points = PackedVector2Array([
+				Vector2(0, -sh),
+				Vector2(sw, 0),
+				Vector2(0, sh),
+				Vector2(-sw, 0),
+				Vector2(0, -sh)
+			])
+			draw_polyline(points, color, line_width, true)
+
+		GameData.ShapeType.PLUS:
+			var s = radius * 0.9
+			var t = s * 0.2
+			var points = PackedVector2Array([
+				Vector2(-t, -s), Vector2(t, -s), Vector2(t, -t),
+				Vector2(s, -t),  Vector2(s, t),  Vector2(t, t),
+				Vector2(t, s),   Vector2(-t, s), Vector2(-t, t),
+				Vector2(-s, t),  Vector2(-s, -t), Vector2(-t, -t),
+				Vector2(-t, -s)
 			])
 			draw_polyline(points, color, line_width, true)
 			
