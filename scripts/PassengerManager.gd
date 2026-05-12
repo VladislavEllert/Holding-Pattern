@@ -6,26 +6,19 @@ var new_passenger_scale: float = 1.0
 
 func spawn_passenger(my_shape):
 	var current_shapes = []
-	
-	# 1. Сначала узнаем, какие типы аэропортов реально есть на сцене
+
 	var existing_airport_types = []
 	for airport in get_tree().get_nodes_in_group("airports"):
 		if not existing_airport_types.has(airport.my_shape):
 			existing_airport_types.append(airport.my_shape)
 	
-	# 2. Формируем список доступных фигур для пассажира
 	for shape in GameData.ShapeType.values():
-		# Пассажир не может хотеть в тот же тип, где он родился
-		# И его цель ОБЯЗАНА существовать на карте
 		if shape != my_shape and existing_airport_types.has(shape):
 			current_shapes.append(shape)
 	
-	# Если на карте пока нет других типов (такое бывает в самом начале), 
-	# выходим, чтобы не вызвать ошибку при pick_random()
 	if current_shapes.is_empty():
 		return
 
-	# 3. Спавним пассажира
 	SoundManager.play("spawn_passengers")
 	var passenger_shape = current_shapes.pick_random()
 	passengers.append(passenger_shape)
@@ -96,7 +89,7 @@ func draw_passengers(drawer: Node2D):
 					drawer.draw_colored_polygon(points, passenger_color)
 					
 				GameData.ShapeType.PENTAGON:
-					var size = p_size * current_scale * 1.2
+					var size = p_size * 1.0 * 1.2
 					var points = PackedVector2Array()
 					for c in range(5):
 						var angle = deg_to_rad(c * 72 - 90)
@@ -104,8 +97,8 @@ func draw_passengers(drawer: Node2D):
 					drawer.draw_colored_polygon(points, passenger_color)
 					
 				GameData.ShapeType.GEM:
-					var sw = p_size * current_scale * 1.0 # Ширина
-					var sh = p_size * current_scale * 1.5 # Высота
+					var sw = p_size * 0.8 * 1.0 # Ширина
+					var sh = p_size * 0.7 * 1.5 # Высота
 					var points = PackedVector2Array([
 						pos + Vector2(0, -sh), # Верх
 						pos + Vector2(sw, 0),  # Право
@@ -115,7 +108,7 @@ func draw_passengers(drawer: Node2D):
 					drawer.draw_colored_polygon(points, passenger_color)
 					
 				GameData.ShapeType.PLUS:
-					var s = p_size * current_scale * 1.9
+					var s = p_size * 0.5 * 1.9
 					var t = s * 0.3 # Толщина перекладин
 					var points = PackedVector2Array([
 						pos + Vector2(-t, -s), pos + Vector2(t, -s), pos + Vector2(t, -t),   # Верх
