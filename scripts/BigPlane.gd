@@ -326,7 +326,7 @@ func _drop_plane():
 		
 		forward = true 
 	else:
-		GameData.start_planes += 1
+		GameData.big_planes += 1
 		for count_label in get_tree().get_nodes_in_group("countPlane"):
 			if count_label.has_method("update_counter"):
 				count_label.update_counter()
