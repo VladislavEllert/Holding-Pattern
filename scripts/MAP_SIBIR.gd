@@ -4,7 +4,7 @@ var airport_scene = load("res://scene/Airport.tscn")
 var route_scene = load("res://scene/Route.tscn")
 
 var _is_out_of_colors: bool
-
+var anything_selected: bool = false
 @onready var spawn_points := $AirportSpawn
 @onready var camera := $Camera2D
 @onready var score_pack = $UI/Control/MarginContainer/HBoxContainer/ScorePack
@@ -179,6 +179,7 @@ func _process(delta):
 			pred_line.default_color = GameData.lines_data["current hex color"]
 			check_airport()
 	else:
+		_is_out_of_colors = false
 		if is_instance_valid(stop_sign):
 			stop_sign.visible = false
 			
@@ -394,6 +395,7 @@ func set_line_stroke(is_active: bool):
 
 
 func _on_airport_selected(airport, is_out_of_colors):
+	anything_selected = true
 	var current_color = lines_data["current color"]
 	
 	selected_airport = airport
@@ -408,27 +410,30 @@ func _on_airport_selected(airport, is_out_of_colors):
 				a.draw_stroke(true)
 
 func _on_handle_grabbed(route, is_start):
-	lines_data["current color"] = route.route_data["color"]
-	lines_data["current hex color"] = route.route_data["route_color"]
-	
-	var current_color = lines_data["current color"]
-	var airport
-	if is_start: airport = route.route_data["start_airport"]
-	else: airport = route.route_data["end_airport"]
-	
-	if lines_data["in_" + lines_data["current color"]] and airport == lines_data[lines_data["current color"] + "_airports"][0]:
-		var a = lines_data[lines_data["current color"] + "_airports"][0]
-		lines_data[lines_data["current color"] + "_airports"][0] = lines_data[lines_data["current color"] + "_airports"][-1]
-		lines_data[lines_data["current color"] + "_airports"][-1] = a
-	
-	selected_airport = airport
-	is_drawing = true
-	selected_airport.draw_stroke(true)
-	SoundManager.play("click_airport")
-	
-	for a in lines_data[current_color + "_airports"]:
-		if is_instance_valid(a):
-			a.draw_stroke(true)
+	await get_tree().create_timer(0.01).timeout
+	if not anything_selected:
+		anything_selected = true
+		lines_data["current color"] = route.route_data["color"]
+		lines_data["current hex color"] = route.route_data["route_color"]
+		
+		var current_color = lines_data["current color"]
+		var airport
+		if is_start: airport = route.route_data["start_airport"]
+		else: airport = route.route_data["end_airport"]
+		
+		if lines_data["in_" + lines_data["current color"]] and airport == lines_data[lines_data["current color"] + "_airports"][0]:
+			var a = lines_data[lines_data["current color"] + "_airports"][0]
+			lines_data[lines_data["current color"] + "_airports"][0] = lines_data[lines_data["current color"] + "_airports"][-1]
+			lines_data[lines_data["current color"] + "_airports"][-1] = a
+		
+		selected_airport = airport
+		is_drawing = true
+		selected_airport.draw_stroke(true)
+		SoundManager.play("click_airport")
+		
+		for a in lines_data[current_color + "_airports"]:
+			if is_instance_valid(a):
+				a.draw_stroke(true)
 
 func refresh_line_hand():
 	if is_refreshing:
