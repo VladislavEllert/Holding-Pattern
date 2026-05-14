@@ -21,17 +21,25 @@ var current_target_airport = null
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		var mouse_pos = get_global_mouse_position()
+		
 		if event.pressed:
-			
+			if GameData.is_take_plane: 
+				return
+				
 			for airport in get_tree().get_nodes_in_group("airports"):
 				if mouse_pos.distance_to(airport.global_position) < 35.0:
 					return
+		
 			if not is_transport_plane and mouse_pos.distance_to(global_position) < 40.0:
 				is_transport_plane = true
-				scale = Vector2(0.84, 0.84)
+				GameData.is_take_plane = true
+				scale = Vector2(0.8, 0.8)
 				z_index = 10
+				
 		elif not event.pressed and is_transport_plane:
-				_drop_plane()
+			is_transport_plane = false
+			GameData.is_take_plane = false
+			_drop_plane()
 
 func _process(delta):
 	if is_transport_plane or !current_route or is_waiting:
@@ -343,21 +351,90 @@ func _get_lines_at_airport(airport) -> Array:
 					if not c in lines_here: lines_here.append(c)
 	return lines_here
 
+func can_reach_destination(start_airport, target_shape, max_transfers = 3) -> bool:
+	var queue = []
+	var visited_lines = []
+	
+	for line in _get_lines_at_airport(start_airport):
+		queue.append({"line": line, "transfers": 0})
+		visited_lines.append(line)
+	
+	var head = 0
+	while head < queue.size():
+		var current = queue[head]
+		head += 1
+		
+		var l_color = current["line"]
+		var depth = current["transfers"]
+		
+		if target_shape in GameData.lines_data[l_color + "_shapes"]:
+			return true
+			
+		if depth < max_transfers:
+			for airport in _get_airports_on_line(l_color):
+				for next_line in _get_lines_at_airport(airport):
+					if not next_line in visited_lines:
+						visited_lines.append(next_line)
+						queue.append({"line": next_line, "transfers": depth + 1})
+						
+	return false
+	
 func _can_reach_transfer_hub(target_shape) -> bool:
 	var routes_key = color + "_routes"
 	if not GameData.lines_data.has(routes_key): return false
 	
 	for r in GameData.lines_data[routes_key]:
 		for a in [r["start_airport"], r["end_airport"]]:
-			for l_color in _get_lines_at_airport(a):
-				if l_color != color and target_shape in GameData.lines_data[l_color + "_shapes"]:
-					return true
+			if can_reach_destination(a, target_shape, 2):
+				return true
 	return false
+
+func _get_airports_on_line(line_color) -> Array:
+	var airports = []
+	var routes_key = line_color + "_routes"
+	if GameData.lines_data.has(routes_key):
+		for r in GameData.lines_data[routes_key]:
+			if not r["start_airport"] in airports: airports.append(r["start_airport"])
+			if not r["end_airport"] in airports: airports.append(r["end_airport"])
+	return airports
+	
+func get_route_path(start_airport, target_shape, max_transfers = 5):
+	var queue = []
+	
+	for line in _get_lines_at_airport(start_airport):
+		queue.append([start_airport, [line], [line]])
+
+	var head = 0
+	while head < queue.size():
+		var current_data = queue[head]
+		head += 1
+		
+		var current_airport = current_data[0]
+		var current_path = current_data[1]
+		var visited_lines = current_data[2]
+		
+		var current_line = current_path.back()
+		
+		if target_shape in GameData.lines_data[current_line + "_shapes"]:
+			return current_path
+
+		if current_path.size() < max_transfers:
+			for airport in _get_airports_on_line(current_line):
+				for next_line in _get_lines_at_airport(airport):
+					if not next_line in visited_lines:
+						var new_path = current_path.duplicate()
+						new_path.append(next_line)
+						
+						var new_visited = visited_lines.duplicate()
+						new_visited.append(next_line)
+						
+						queue.append([airport, new_path, new_visited])
+	
+	return []
 
 func handle_passengers(airport):
 	var pm = airport.passenger_manager
 	if !pm or is_loading: return
-	
 	is_loading = true
 	
 	var remaining_cargo = []
@@ -365,50 +442,31 @@ func handle_passengers(airport):
 		if p_shape == airport.my_shape:
 			Events.passengers_delivery.emit()
 		else:
-			var on_my_line = p_shape in GameData.lines_data[color + "_shapes"]
-			var can_transfer_here = false
-			
-			if not on_my_line:
-				for l in _get_lines_at_airport(airport):
-					if l != color and p_shape in GameData.lines_data[l + "_shapes"]:
-						can_transfer_here = true
-						break
-			
-			if can_transfer_here:
+			var path = get_route_path(airport, p_shape)
+			if path.size() > 0 and path[0] != color:
+				pm.passengers.append(p_shape)
+			elif path.size() == 0:
 				pm.passengers.append(p_shape)
 			else:
 				remaining_cargo.append(p_shape)
 	
 	cargo = remaining_cargo
-	
 	var i = 0
 	while i < pm.passengers.size() and cargo.size() < max_seats:
 		var p_shape = pm.passengers[i]
-		var can_reach_directly = p_shape in GameData.lines_data[color + "_shapes"]
-		var can_help_transfer = false
+		var path = get_route_path(airport, p_shape)
 		
-		if not can_reach_directly:
-			can_help_transfer = _can_reach_transfer_hub(p_shape)
-		
-		var already_on_right_line = false
-		for l in _get_lines_at_airport(airport):
-			if p_shape in GameData.lines_data[l + "_shapes"] and l != color:
-				already_on_right_line = true
-		
-		if can_reach_directly or (can_help_transfer and not already_on_right_line):
+		if path.size() > 0 and path[0] == color:
 			pm.passengers.remove_at(i)
 			airport.queue_redraw()
-			
 			await get_tree().create_timer(0.15).timeout
-			
+			if not is_instance_valid(airport) or not is_instance_valid(self): return
 			cargo.append(p_shape)
 			queue_redraw()
-			
 			await get_tree().create_timer(0.15).timeout
 		else:
 			i += 1
 	
 	airport.queue_redraw()
 	queue_redraw()
-	
 	is_loading = false

@@ -78,7 +78,7 @@ var is_refreshing = false
 var lines_data = GameData.lines_data
 var clear_data_twin: Tween
 
-var target_camera_pos:  Vector2 = Vector2(0, 0)
+var target_camera_pos = Vector2(0, 0)
 var camera_lerp_speed: float = 5.0
 var target_camera_rotation: float = 0.0
 var pause_camera_rotation: float = -0.2
@@ -253,16 +253,16 @@ func unlock_next_phase():
 				new_speed = 1.7
 				
 			if current_phase == 4:
-				new_speed = 1.0
+				new_speed = 1.2
 				
 			if current_phase == 5:
-				new_speed = 0.5
+				new_speed = 0.8
 				
 			if current_phase == 6:
-				new_speed = 0.25
+				new_speed = 0.5
 				
 			if current_phase == 7:
-				new_speed = 0.1
+				new_speed = 0.3
 			
 			passenger_timer.wait_time = new_speed
 			passenger_timer.start()
@@ -822,7 +822,7 @@ func _on_continue_pressed() -> void:
 	
 	get_tree().paused = false
 	SoundManager.play("click_button")
-	target_camera_pos = Vector2(1374.0, 369.0) 
+	target_camera_pos = Vector2(1374.0, 215.0)
 	camera_lerp_speed = 5.0
 	await get_tree().create_timer(0.2).timeout
 	var tween = create_tween()
@@ -845,7 +845,7 @@ func _on_pause_button_pressed() -> void:
 	tween.set_parallel(true)
 	
 	var screen_size = get_viewport_rect().size
-	var new_y = camera.position.y - (screen_size.y) + 300
+	var new_y = camera.position.y - (screen_size.y) + 650
 	tween.tween_property(camera, "position", Vector2(camera.position.x - 150, new_y), 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 		
 	target_rotation = pause_camera_rotation 

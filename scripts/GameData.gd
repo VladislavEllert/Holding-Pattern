@@ -3,9 +3,11 @@ extends Node
 var start_planes: int = 3
 var big_planes: int = 1
 var big_airports: int = 1
-var max_passengers: int = 6
+var max_passengers: int = 600
 var big_max_passengers: int = 10
 var current_week: int = 1
+
+var is_take_plane = false
 
 var high_score: int = 0
 const SAVE_PATH = "user://savegame.cfg"
