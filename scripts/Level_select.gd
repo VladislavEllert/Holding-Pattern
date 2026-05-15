@@ -19,6 +19,13 @@ func _ready():
 	cards = container.get_children()
 	if cards.size() > 0:
 		card_width = cards[0].size.x
+		for i in range(cards.size()):
+			var card = cards[i]
+			if card is Button:
+				card.mouse_filter = Control.MOUSE_FILTER_PASS
+		
+		update_target_x()
+		container.position.x = target_x
 		update_target_x()
 		container.position.x = target_x
 
@@ -28,7 +35,8 @@ func _process(delta):
 	container.position.x = lerp(container.position.x, target_x + drag_offset, 10.0 * delta)
 	var menu_center_x = size.x / 2.0
 	
-	for card in cards:
+	for i in range(cards.size()):
+		var card = cards[i]
 		var card_center = container.position.x + card.position.x + (card.size.x / 2.0)
 		var distance = abs(menu_center_x - card_center)
 		var s = clamp(1.04 - (distance / 700.0), 0.9, 1.15)
@@ -38,6 +46,14 @@ func _process(delta):
 		card.modulate.a = lerp(card.modulate.a, a, 12.0 * delta)
 		
 		card.z_index = int(s * 10)
+		
+		if card is Button:
+			if distance < 50.0:
+				card.disabled = false
+				card.focus_mode = Control.FOCUS_ALL
+			else:
+				card.disabled = true
+				card.focus_mode = Control.FOCUS_NONE
 
 func _input(event):
 	if event is InputEventMouseButton:
@@ -52,7 +68,7 @@ func _input(event):
 				is_dragging = false
 				var swipe_dist = drag_current_x - drag_start_x
 				
-				if abs(swipe_dist) > card_width * 0.15:
+				if abs(swipe_dist) > card_width * 0.1:
 					current_index = clamp(current_index - sign(swipe_dist), 0, cards.size() - 1)
 				
 				drag_start_x = 0
@@ -66,4 +82,3 @@ func update_target_x():
 	var menu_center_x = size.x / 2.0
 	var offset_to_card = current_index * (card_width + spacing) + (card_width / 2.0)
 	target_x = menu_center_x - offset_to_card
-	
