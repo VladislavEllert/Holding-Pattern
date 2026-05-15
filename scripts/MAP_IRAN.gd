@@ -58,7 +58,7 @@ var special_shapes = [
 	GameData.ShapeType.GEM,
 	GameData.ShapeType.PLUS
 ]
-var special_spawn_chance = 0.15
+var special_spawn_chance = 0.95
 
 var all_zones: Array = []
 var active_airport: Array[Vector2] = []
@@ -358,7 +358,7 @@ func spawn_airport(current_phase):
 	if not start_shapes.is_empty():
 		inst.forced_shape = start_shapes.pop_front()
 	else:
-		if randf() < special_spawn_chance and current_phase >= 3:
+		if randf() < special_spawn_chance and current_phase >= 1:
 			var pool = []
 			var existing_types = []
 			for a in get_tree().get_nodes_in_group("airports"):

@@ -177,8 +177,8 @@ func draw_passengers(drawer: Node2D):
 					drawer.draw_colored_polygon(points, passenger_color)
 					
 				GameData.ShapeType.GEM:
-					var sw = p_size * current_scale * 1.1
-					var sh = p_size * current_scale * 1.5
+					var sw = p_size * current_scale * 1.0
+					var sh = p_size * current_scale * 1.4
 					var points = PackedVector2Array([
 						pos + Vector2(0, -sh),
 						pos + Vector2(sw, 0),
