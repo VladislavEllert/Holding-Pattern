@@ -303,7 +303,6 @@ icon = ExtResource("12_0yv6x")
 flat = true
 
 [node name="SoundLabel2" type="Label" parent="SettingsMenu" unique_id=1357745194]
-visible = false
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = -502.0
@@ -314,7 +313,6 @@ theme_override_font_sizes/font_size = 72
 text = "Язык"
 
 [node name="Sound2" type="Label" parent="SettingsMenu" unique_id=1339149932]
-visible = false
 modulate = Color(0, 0, 0, 1)
 layout_mode = 0
 offset_left = -164.0
@@ -326,7 +324,6 @@ text = "Русский"
 horizontal_alignment = 1
 
 [node name="SoundMinus2" type="Button" parent="SettingsMenu" unique_id=562283566]
-visible = false
 layout_mode = 0
 offset_left = -135.0
 offset_top = 1465.0
@@ -338,7 +335,6 @@ flat = true
 expand_icon = true
 
 [node name="SoundPlus2" type="Button" parent="SettingsMenu" unique_id=843698771]
-visible = false
 layout_mode = 0
 offset_left = 373.0
 offset_top = 1312.0
