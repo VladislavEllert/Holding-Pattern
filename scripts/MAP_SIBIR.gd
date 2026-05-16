@@ -5,6 +5,7 @@ var route_scene = load("res://scene/Route.tscn")
 
 var _is_out_of_colors: bool
 var anything_selected: bool = false
+
 @onready var spawn_points := $AirportSpawn
 @onready var camera := $Camera2D
 @onready var score_pack = $UI/Control/MarginContainer/HBoxContainer/ScorePack
@@ -180,6 +181,7 @@ func _process(delta):
 			check_airport()
 	else:
 		_is_out_of_colors = false
+		anything_selected = false
 		if is_instance_valid(stop_sign):
 			stop_sign.visible = false
 			
@@ -416,7 +418,7 @@ func _on_handle_grabbed(route, is_start):
 		lines_data["current color"] = route.route_data["color"]
 		lines_data["current hex color"] = route.route_data["route_color"]
 		
-		var current_color = lines_data["current color"]
+		var current_color = route.route_data["color"]
 		var airport
 		if is_start: airport = route.route_data["start_airport"]
 		else: airport = route.route_data["end_airport"]
@@ -545,7 +547,7 @@ func _get_airport_():
 	var airports = get_tree().get_nodes_in_group("airports")
 	airports.shuffle()
 	for a in airports:
-		if a.passenger_manager.passengers.size() < 9:
+		if a.passenger_manager.passengers.size() < a.max_passengers + 3:
 			return a
 	return null
 
@@ -755,7 +757,8 @@ func _on_clear_data_pressed() -> void:
 				var d = route_node.route_data
 				deleted_station_slot(d["start_airport"], current_color)
 				deleted_station_slot(d["end_airport"], current_color)
-		
+				route_node.queue_free()
+
 		clear_data(current_color)
 		refresh_all_airports()
 		
@@ -848,4 +851,3 @@ func _on_pause_button_pressed() -> void:
 		
 	target_rotation = pause_camera_rotation 
 	tween.tween_property(camera, "rotation", target_rotation, 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	

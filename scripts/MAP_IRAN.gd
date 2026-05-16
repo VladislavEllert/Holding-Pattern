@@ -128,7 +128,6 @@ func _ready():
 	for i in range(3):
 		spawn_airport(current_phase)
 	
-	
 	score_pack.scale = Vector2.ZERO
 	score_pack.modulate.a = 0
 	get_tree().create_timer(1.0).timeout.connect(animate_score)
@@ -358,7 +357,7 @@ func spawn_airport(current_phase):
 	if not start_shapes.is_empty():
 		inst.forced_shape = start_shapes.pop_front()
 	else:
-		if randf() < special_spawn_chance and current_phase >= 3:
+		if randf() < special_spawn_chance and current_phase >= 1:
 			var pool = []
 			var existing_types = []
 			for a in get_tree().get_nodes_in_group("airports"):
@@ -759,7 +758,8 @@ func _on_clear_data_pressed() -> void:
 				var d = route_node.route_data
 				deleted_station_slot(d["start_airport"], current_color)
 				deleted_station_slot(d["end_airport"], current_color)
-		
+				route_node.queue_free()
+				
 		clear_data(current_color)
 		refresh_all_airports()
 		
@@ -851,4 +851,3 @@ func _on_pause_button_pressed() -> void:
 		
 	target_rotation = pause_camera_rotation 
 	tween.tween_property(camera, "rotation", target_rotation, 0.7).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
-	

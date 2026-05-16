@@ -656,6 +656,7 @@ func _on_menu_pressed():
 	for color in GameData.lines_data["active colors"]:
 		clear_data(color)
 	get_tree().change_scene_to_file("res://scene/StartMenu.tscn")
+	
 
 func _on_button_hovered(hovered_btn):
 	for btn in buttons:
@@ -757,6 +758,7 @@ func _on_clear_data_pressed() -> void:
 				var d = route_node.route_data
 				deleted_station_slot(d["start_airport"], current_color)
 				deleted_station_slot(d["end_airport"], current_color)
+				route_node.queue_free()
 		
 		clear_data(current_color)
 		refresh_all_airports()

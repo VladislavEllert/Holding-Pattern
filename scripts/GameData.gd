@@ -3,7 +3,7 @@ extends Node
 var start_planes: int = 3
 var big_planes: int = 1
 var big_airports: int = 1
-var max_passengers: int = 600
+var max_passengers: int = 6
 var big_max_passengers: int = 10
 var current_week: int = 1
 
@@ -116,7 +116,6 @@ var color_values = {
 	"light_orange": Color(1.0, 0.565, 0.282, 1.0),
 	"lavanda": Color(1.0, 0.624, 0.706, 1.0),
 }
-
 
 
 var high_scores = {
