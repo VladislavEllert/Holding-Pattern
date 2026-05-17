@@ -1021,7 +1021,7 @@ metadata/_edit_lock_ = true
 [node name="Zone0" type="Node2D" parent="AirportSpawn" unique_id=211188203]
 
 [node name="Marker2D13" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=759523272]
-position = Vector2(1363, 381)
+position = Vector2(1363, 380)
 
 [node name="Marker2D18" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=787454299]
 position = Vector2(1329, 554)
@@ -1084,7 +1084,7 @@ position = Vector2(1257, 713)
 position = Vector2(1773, 93)
 
 [node name="Marker2D40" type="Marker2D" parent="AirportSpawn/Zone3" unique_id=1304664460]
-position = Vector2(1093, 5)
+position = Vector2(1129, 41)
 
 [node name="Zone4" type="Node2D" parent="AirportSpawn" unique_id=606329077]
 
