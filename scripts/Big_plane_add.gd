@@ -113,7 +113,6 @@ func _drop_plane():
 	if found_route and route_data_:
 		found_route.spawn_plane(route_data_, t_, true)
 		SoundManager.play("add_plane")
-		print("самолет появился")
 		
 	
 	

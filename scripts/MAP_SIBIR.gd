@@ -273,7 +273,6 @@ func unlock_next_phase():
 			
 			passenger_timer.wait_time = new_speed
 			passenger_timer.start()
-			print("Фаза: ", current_phase,"| ", "(ZOOM: ", target_zoom,"| ", "пассажиров/сек: ", new_speed)
 
 
 func _input(event):
@@ -564,7 +563,6 @@ func _spawn_one_passenger():
 		target.spawn_passenger()
 	
 func game_over(_failed_airport):
-	print("stop")
 	get_tree().paused = true
 	$UI.visible = false
 	

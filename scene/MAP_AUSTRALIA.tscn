@@ -1183,6 +1183,9 @@ position = Vector2(1164, 374)
 [node name="Marker2D4" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=807676308]
 position = Vector2(1265, 54)
 
+[node name="Marker2D22" type="Marker2D" parent="AirportSpawn/Zone0" unique_id=458126559]
+position = Vector2(1406, 135)
+
 [node name="Zone1" type="Node2D" parent="AirportSpawn" unique_id=1832309770]
 
 [node name="Marker2D31" type="Marker2D" parent="AirportSpawn/Zone1" unique_id=914191304]
