@@ -566,6 +566,10 @@ size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 45
 
+[node name="Control" type="Control" parent="UI/Control/MarginContainer/BonusButton" unique_id=1290317953]
+custom_minimum_size = Vector2(0, 250)
+layout_mode = 2
+
 [node name="PlaneBonus" type="Control" parent="UI/Control/MarginContainer/BonusButton" unique_id=318531356]
 custom_minimum_size = Vector2(0, 576.695)
 layout_mode = 2
