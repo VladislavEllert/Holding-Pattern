@@ -851,7 +851,7 @@ func _animate_bonus_plane(button_res: TextureRect):
 func _on_continue_pressed() -> void:
 	get_tree().paused = false
 	SoundManager.play("click_button")
-	target_camera_pos = Vector2(1374.0, 369.0) 
+	target_camera_pos = Vector2(1374.0, 210.0) 
 	camera_lerp_speed = 5.0
 	await get_tree().create_timer(0.2).timeout
 	var tween = create_tween()

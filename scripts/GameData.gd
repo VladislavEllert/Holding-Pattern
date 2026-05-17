@@ -13,7 +13,7 @@ var big_planes: int = 1:
 		big_planes_changed.emit(big_planes)
 		
 signal big_airports_changed(new_value)
-var big_airports: int = 1:
+var big_airports: int = 0:
 	set(value):
 		big_airports = value
 		big_airports_changed.emit(big_airports)

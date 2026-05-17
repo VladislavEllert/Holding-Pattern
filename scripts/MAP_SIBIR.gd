@@ -651,7 +651,7 @@ func _on_restart_pressed():
 	GameData.lines_data["current color"] = "light_yellow"
 	GameData.start_planes = 3
 	GameData.big_airports = 0
-	GameData.big_planes = 0
+	GameData.big_planes = 1
 	GameData.current_week = 1
 	GameData.lines_data["current hex color"] = Color(1.0, 0.812, 0.039, 1.0)
 	get_tree().change_scene_to_file("res://scene/MAP_SIBIR.tscn")
@@ -850,7 +850,7 @@ func _animate_bonus_plane(button_res: TextureRect):
 func _on_continue_pressed() -> void:
 	get_tree().paused = false
 	SoundManager.play("click_button")
-	target_camera_pos = Vector2(1374.0, 369.0) 
+	target_camera_pos = Vector2(1446.0, 389.0) 
 	camera_lerp_speed = 5.0
 	await get_tree().create_timer(0.2).timeout
 	var tween = create_tween()
