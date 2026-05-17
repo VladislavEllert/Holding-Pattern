@@ -20,6 +20,10 @@ var anything_selected: bool
 @onready var speed_1_btn = $UI/Control/MarginContainer/VBoxContainer/Button
 @onready var speed_2_btn = $UI/Control/MarginContainer/VBoxContainer/Button2
 
+@onready var add_plane_btn = $UI/Control/MarginContainer/BonusButton/PlaneBonus
+@onready var add_big_plane_btn = $UI/Control/MarginContainer/BonusButton/BigPlaneBonus
+@onready var add_big_airport_btn = $UI/Control/MarginContainer/BonusButton/AirportBonus
+
 @onready var inactive_buttons = [$UI/Control/MarginContainer/VBoxContainer/LightBlue,
  								$UI/Control/MarginContainer/VBoxContainer/Green,
  								$UI/Control/MarginContainer/VBoxContainer/Pink,
@@ -779,6 +783,7 @@ func _on_week_timer_timeout() -> void:
 	
 
 func _on_bonus_plane_pressed() -> void:
+	_animate_bonus_plane(add_plane_btn)
 	GameData.start_planes += 1
 	SoundManager.play("click_button")
 	$UI/BonusPlane.hide()
@@ -806,6 +811,7 @@ func _on_bonus_line_pressed() -> void:
 	get_tree().paused = false
 
 func _on_bonus_big_plane_pressed() -> void:
+	_animate_bonus_plane(add_big_plane_btn)
 	GameData.big_planes += 1
 	SoundManager.play("click_button")
 	$UI/BonusPack1.hide()
@@ -813,18 +819,27 @@ func _on_bonus_big_plane_pressed() -> void:
 	get_tree().paused = false
 
 func _on_bonus_big_airport_pressed() -> void:
+	_animate_bonus_plane(add_big_airport_btn)
 	GameData.big_airports += 1
 	SoundManager.play("click_button")
 	$UI/BonusPack2.hide()
 	$UI/BonusPack3.hide()
 	get_tree().paused = false
 
+func _animate_bonus_plane(button_res: TextureRect):
+	if not button_res: return
+	button_res.pivot_offset = button_res.size / 2
+	var tween = create_tween()
+	tween.set_trans(Tween.TRANS_SPRING).set_ease(Tween.EASE_OUT)
+	tween.tween_property(button_res, "scale", Vector2(1.3, 1.3), 0.15)
+	tween.tween_property(button_res, "scale", Vector2(1.0, 1.0), 0.25)
+	
+
 
 func _on_continue_pressed() -> void:
-	
 	get_tree().paused = false
 	SoundManager.play("click_button")
-	target_camera_pos = Vector2(1374.0, 215.0)
+	target_camera_pos = Vector2(1374.0, 369.0) 
 	camera_lerp_speed = 5.0
 	await get_tree().create_timer(0.2).timeout
 	var tween = create_tween()
