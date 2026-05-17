@@ -27,19 +27,31 @@
 [ext_resource type="Texture2D" uid="uid://c32r7a0jfkk6t" path="res://objects/Button_blue.png" id="25_e0oki"]
 [ext_resource type="Texture2D" uid="uid://ck4unu555lgo2" path="res://objects/Button_red.png" id="26_vuk2p"]
 [ext_resource type="Texture2D" uid="uid://bc0trire67wgn" path="res://objects/Button_NULL.png" id="27_5dohl"]
+[ext_resource type="Script" uid="uid://ck31bwsmrf55i" path="res://scripts/RES_Stack_Plane.gd" id="28_63lyc"]
 [ext_resource type="Texture2D" uid="uid://bvq3rqkkfv8j3" path="res://objects/Bonus_Plane.png" id="28_ol05i"]
+[ext_resource type="Texture2D" uid="uid://bd8r2i56glsva" path="res://objects/Bonus_Plane_3.png" id="29_lu3bg"]
 [ext_resource type="Script" uid="uid://c44tchjyc16q0" path="res://scripts/Plane_add.gd" id="29_y73qj"]
+[ext_resource type="Texture2D" uid="uid://q46s37fjksc4" path="res://objects/Bonus_Plane_2.png" id="30_0i27f"]
 [ext_resource type="Texture2D" uid="uid://cw60yd0i354ir" path="res://objects/Bonus_bigPlane.png" id="30_gv76m"]
 [ext_resource type="Script" uid="uid://d3pmmn6uqag7c" path="res://scripts/Big_plane_add.gd" id="31_bvoqt"]
+[ext_resource type="Texture2D" uid="uid://ccy0y3ykv5lil" path="res://objects/Bonus_Plane_1.png" id="31_fwco7"]
 [ext_resource type="Texture2D" uid="uid://gegyo2242mki" path="res://objects/Bonus_airport.png" id="32_qesy2"]
 [ext_resource type="Script" uid="uid://c7hrg251scscx" path="res://scripts/Big_airport_add.gd" id="33_vvr5k"]
 [ext_resource type="Texture2D" uid="uid://cel3fq7keunyb" path="res://objects/Bonus_BG.png" id="34_b40m6"]
+[ext_resource type="Script" uid="uid://mn1snfm1scat" path="res://scripts/RES_Stack_Big_plane.gd" id="34_wsmg2"]
 [ext_resource type="Texture2D" uid="uid://cuwxliug2w6e3" path="res://objects/Bonus_button/bonus_plane.png" id="35_jyjvo"]
+[ext_resource type="Texture2D" uid="uid://cgt8v0u8cpiqi" path="res://objects/Bonus_bigPlane_3.png" id="35_w0kx4"]
+[ext_resource type="Texture2D" uid="uid://dsqoj6fdrtqd1" path="res://objects/Bonus_bigPlane_2.png" id="36_ldmvr"]
 [ext_resource type="Texture2D" uid="uid://sd8ikbh8wmlv" path="res://objects/Bonus_button/bonus_line.png" id="36_yrc1y"]
+[ext_resource type="Texture2D" uid="uid://dddk2bdye0wud" path="res://objects/Bonus_bigPlane_1.png" id="37_f36e2"]
 [ext_resource type="Texture2D" uid="uid://8byctqbu54t" path="res://objects/Bonus_button/bonus_big_plane.png" id="37_wsf0r"]
 [ext_resource type="Texture2D" uid="uid://jvtasude1xts" path="res://objects/Bonus_button/bonus_airport.png" id="38_abo0l"]
 [ext_resource type="Texture2D" uid="uid://b6dnv4yl8clsx" path="res://objects/x.png" id="39_m0ifj"]
+[ext_resource type="Script" uid="uid://r4o0mogykyws" path="res://scripts/RES_Stack_Airport.gd" id="40_2c53v"]
 [ext_resource type="Script" uid="uid://bl5nsctnp02ke" path="res://scripts/Stop_sign.gd" id="40_jjlh2"]
+[ext_resource type="Texture2D" uid="uid://bqu5eistftn2b" path="res://objects/Bonus_airport_3.png" id="41_6das4"]
+[ext_resource type="Texture2D" uid="uid://nuiikjp0cjk1" path="res://objects/Bonus_airport_2.png" id="42_hmiwg"]
+[ext_resource type="Texture2D" uid="uid://b68yg6ylv8q2u" path="res://objects/Bonus_airport_1.png" id="43_e0oki"]
 
 [sub_resource type="Gradient" id="Gradient_jjlh2"]
 colors = PackedColorArray(0.49019608, 0.8392157, 0.9254902, 1, 0.49019608, 0.8392157, 0.9254902, 1)
@@ -560,35 +572,159 @@ theme_override_styles/disabled = SubResource("StyleBoxFlat_x1lu1")
 disabled = true
 flat = true
 
-[node name="BonusButton" type="VBoxContainer" parent="UI/Control/MarginContainer" unique_id=1062485042]
+[node name="BonusButton" type="VBoxContainer" parent="UI/Control/MarginContainer" unique_id=1905557143]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 4
 theme_override_constants/separation = 45
 
-[node name="PlaneBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=1475626757]
+[node name="PlaneBonus" type="Control" parent="UI/Control/MarginContainer/BonusButton" unique_id=1318278326]
+custom_minimum_size = Vector2(0, 576.695)
 layout_mode = 2
+script = ExtResource("28_63lyc")
+
+[node name="Back3" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/PlaneBonus" unique_id=421384337]
+layout_mode = 0
+offset_left = -84.0
+offset_top = 45.66
+offset_right = 98.0
+offset_bottom = 227.66
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("29_lu3bg")
+stretch_mode = 1
+
+[node name="Back2" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/PlaneBonus" unique_id=2090777388]
+layout_mode = 0
+offset_left = -56.0
+offset_top = 45.66
+offset_right = 126.0
+offset_bottom = 227.66
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("30_0i27f")
+stretch_mode = 1
+
+[node name="Back1" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/PlaneBonus" unique_id=1030507015]
+layout_mode = 0
+offset_left = -28.0
+offset_top = 45.66
+offset_right = 154.0
+offset_bottom = 227.66
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("31_fwco7")
+stretch_mode = 1
+
+[node name="PlaneBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/PlaneBonus" unique_id=384792481]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 135.0
+offset_bottom = 180.0
 size_flags_horizontal = 0
 size_flags_vertical = 6
 texture = ExtResource("28_ol05i")
 stretch_mode = 1
 script = ExtResource("29_y73qj")
 
-[node name="BigPlaneBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=1712022429]
+[node name="BigPlaneBonus" type="Control" parent="UI/Control/MarginContainer/BonusButton" unique_id=1844583757]
 layout_mode = 2
+script = ExtResource("34_wsmg2")
+
+[node name="Back3" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/BigPlaneBonus" unique_id=2064949533]
+layout_mode = 0
+offset_left = -84.0
+offset_top = -402.59
+offset_right = 98.0
+offset_bottom = -220.59
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("35_w0kx4")
+
+[node name="Back2" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/BigPlaneBonus" unique_id=667380954]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -402.59
+offset_right = 126.0
+offset_bottom = -220.59
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("36_ldmvr")
+
+[node name="Back1" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/BigPlaneBonus" unique_id=334548124]
+layout_mode = 0
+offset_left = -28.0
+offset_top = -402.59
+offset_right = 154.0
+offset_bottom = -220.59
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("37_f36e2")
+
+[node name="BigPlaneBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/BigPlaneBonus" unique_id=1890571922]
+layout_mode = 0
+offset_top = -405.0
+offset_right = 135.0
+offset_bottom = -270.0
 size_flags_horizontal = 0
 size_flags_vertical = 6
 texture = ExtResource("30_gv76m")
 script = ExtResource("31_bvoqt")
 
-[node name="AirportBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=805145586]
+[node name="AirportBonus" type="Control" parent="UI/Control/MarginContainer/BonusButton" unique_id=2127249934]
 layout_mode = 2
+script = ExtResource("40_2c53v")
+
+[node name="Back3" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/AirportBonus" unique_id=1649548744]
+layout_mode = 0
+offset_left = -84.0
+offset_top = -270.0
+offset_right = 51.0
+offset_bottom = -135.0
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("41_6das4")
+
+[node name="Back2" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/AirportBonus" unique_id=987095866]
+layout_mode = 0
+offset_left = -56.0
+offset_top = -270.0
+offset_right = 79.0
+offset_bottom = -135.0
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("42_hmiwg")
+
+[node name="Back1" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/AirportBonus" unique_id=490790796]
+layout_mode = 0
+offset_left = -28.0
+offset_top = -270.0
+offset_right = 107.0
+offset_bottom = -135.0
+scale = Vector2(0.715, 0.715)
+size_flags_horizontal = 0
+size_flags_vertical = 6
+texture = ExtResource("43_e0oki")
+
+[node name="AirportBonus" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton/AirportBonus" unique_id=893188399]
+layout_mode = 0
+offset_top = -270.0
+offset_right = 135.0
+offset_bottom = -135.0
 size_flags_horizontal = 0
 size_flags_vertical = 6
 texture = ExtResource("32_qesy2")
 script = ExtResource("33_vvr5k")
 
-[node name="CountPlaneZero" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=718431825]
+[node name="CountPlaneZero" type="TextureRect" parent="UI/Control/MarginContainer/BonusButton" unique_id=357692291]
 layout_mode = 2
 metadata/_edit_use_anchors_ = true
 

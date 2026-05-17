@@ -20,9 +20,9 @@ var anything_selected: bool
 @onready var speed_1_btn = $UI/Control/MarginContainer/VBoxContainer/Button
 @onready var speed_2_btn = $UI/Control/MarginContainer/VBoxContainer/Button2
 
-@onready var add_plane_btn = $UI/Control/MarginContainer/BonusButton/PlaneBonus
-@onready var add_big_plane_btn = $UI/Control/MarginContainer/BonusButton/BigPlaneBonus
-@onready var add_big_airport_btn = $UI/Control/MarginContainer/BonusButton/AirportBonus
+@onready var add_plane_btn = $UI/Control/MarginContainer/BonusButton/PlaneBonus/PlaneBonus
+@onready var add_big_plane_btn = $UI/Control/MarginContainer/BonusButton/BigPlaneBonus/BigPlaneBonus
+@onready var add_big_airport_btn = $UI/Control/MarginContainer/BonusButton/AirportBonus/AirportBonus
 
 @onready var inactive_buttons = [$UI/Control/MarginContainer/VBoxContainer/LightBlue,
  								$UI/Control/MarginContainer/VBoxContainer/Green,
@@ -90,6 +90,9 @@ var camera_speed: float = 5.0
 var target_rotation: float = 0.0
 
 func _ready():
+	GameData.start_planes_changed.connect(_on_start_planes_changed)
+	GameData.big_planes_changed.connect(_on_big_planes_changed)
+	GameData.big_airports_changed.connect(_on_big_airports_changed)
 	add_to_group("maps")
 	target_camera_pos = camera.position
 	target_rotation = 0.0
@@ -825,6 +828,15 @@ func _on_bonus_big_airport_pressed() -> void:
 	$UI/BonusPack2.hide()
 	$UI/BonusPack3.hide()
 	get_tree().paused = false
+	
+func _on_start_planes_changed(new_count):
+	_animate_bonus_plane(add_plane_btn)
+	
+func _on_big_planes_changed(new_count):
+	_animate_bonus_plane(add_big_plane_btn)
+
+func _on_big_airports_changed(new_count):
+	_animate_bonus_plane(add_big_airport_btn)
 
 func _animate_bonus_plane(button_res: TextureRect):
 	if not button_res: return

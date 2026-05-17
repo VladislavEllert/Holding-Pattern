@@ -202,10 +202,10 @@ func draw_stroke(active: bool):
 
 func activate_pulse():
 	pulse_color = GameData.lines_data["current hex color"]
-	pulse_radius = 20.0
+	pulse_radius = 30.0
 	pulse_alpha = 1.0
 	var tween = create_tween().set_parallel(true)
-	tween.tween_property(self, "pulse_radius", 50.0, 0.4).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(self, "pulse_radius", 180.0, 0.4).set_trans(Tween.TRANS_SINE)
 	tween.tween_property(self, "pulse_alpha", 0.0, 0.4)
 
 ## пассажиры

@@ -1,8 +1,23 @@
 extends Node
 
-var start_planes: int = 3
-var big_planes: int = 1
-var big_airports: int = 1
+signal start_planes_changed(new_value)
+var start_planes: int = 3:
+	set(value):
+		start_planes = value
+		start_planes_changed.emit(start_planes)
+
+signal big_planes_changed(new_value)
+var big_planes: int = 1:
+	set(value):
+		big_planes = value
+		big_planes_changed.emit(big_planes)
+		
+signal big_airports_changed(new_value)
+var big_airports: int = 1:
+	set(value):
+		big_airports = value
+		big_airports_changed.emit(big_airports)
+		
 var max_passengers: int = 6
 var big_max_passengers: int = 10
 var current_week: int = 1
