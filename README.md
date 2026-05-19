@@ -1,4 +1,4 @@
-![Gameplay](objects/main.png)
+![Gameplay](objects/m.png)
 # Air Routes
 
 > Компьютерная стратегическая игра-головоломка о построении эффективной сети авиалиний.  
@@ -8,7 +8,7 @@
 
 ## Скриншоты
 
-
+![Gameplay](objects/main.png)
 ![Map](objects/play.png)
 
 ---
