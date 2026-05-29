@@ -16,7 +16,6 @@ var is_loading = false
 var is_waiting: bool = false
 var current_target_airport = null
 
-
 func _input(event):
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
 		var mouse_pos = get_global_mouse_position()
@@ -25,10 +24,15 @@ func _input(event):
 			if GameData.is_take_plane: 
 				return
 				
+			var grabbed_handle = _is_mouse_over_any_handle(mouse_pos)
+			if grabbed_handle:
+				return
+				
 			for airport in get_tree().get_nodes_in_group("airports"):
 				if mouse_pos.distance_to(airport.global_position) < 35.0:
 					return
 		
+
 			if not is_transport_plane and mouse_pos.distance_to(global_position) < 40.0:
 				is_transport_plane = true
 				GameData.is_take_plane = true
@@ -39,6 +43,17 @@ func _input(event):
 			is_transport_plane = false
 			GameData.is_take_plane = false
 			_drop_plane()
+
+func _is_mouse_over_any_handle(mouse_pos: Vector2) -> bool:
+	for route in get_tree().get_nodes_in_group("routes"):
+		if is_instance_valid(route):
+			if is_instance_valid(route.handle_start) and route.handle_start.visible:
+				if mouse_pos.distance_to(route.handle_start.global_position) < 35.0:
+					return true
+			if is_instance_valid(route.handle_end) and route.handle_end.visible:
+				if mouse_pos.distance_to(route.handle_end.global_position) < 35.0:
+					return true
+	return false
 
 func _process(delta):
 	if is_transport_plane or !current_route or is_waiting:
@@ -55,17 +70,14 @@ func _process(delta):
 	var distance_to_target = (1.0 - t) if forward else t
 	
 	if distance_to_target < stop_plane:
-		## снижение скорости
 		var slow_factor = clamp(distance_to_target / stop_plane, 0.1, 1.0)
 		var target_brake_speed = target_speed * slow_factor
 		current_speed = lerp(current_speed, target_brake_speed, 0.1)
-	
 	
 	if forward:
 		t += t_
 		if t >= 1.0:
 			t = 1.0
-			
 			switch_to_next_route(true)
 	else:
 		t -= t_
@@ -75,7 +87,6 @@ func _process(delta):
 
 	var dist = t * baked_length
 	var new_pos = curve.sample_baked(dist)
-	
 	
 	if current_speed > 0.1 and position.distance_to(new_pos) > 0.001:
 		var target_angle = (new_pos - position).angle()
@@ -114,12 +125,9 @@ func play_spawn_effect():
 	var flash = create_tween()
 	flash.tween_property(self, "modulate", final_color, 0.3)
 
-
 func start_plane(duration: float):
 	var tween = create_tween().set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
 	tween.tween_property(self, "current_speed", target_speed, duration)
-
-
 
 func switch_to_next_route(arrived_at_end: bool):
 	var arrived_airport = current_route["end_airport"] if arrived_at_end else current_route["start_airport"]
@@ -134,7 +142,6 @@ func switch_to_next_route(arrived_at_end: bool):
 				next_route = route_data_item
 				break
 	
-	## остановка
 	set_process(false)
 	current_speed = 0.0
 	await get_tree().create_timer(1.6).timeout
@@ -153,7 +160,6 @@ func switch_to_next_route(arrived_at_end: bool):
 	start_plane(3.5)
 	set_process(true)
 
-	
 func _upload_passenger(airport):
 	var initial_cargo_size = cargo.size()
 	cargo = cargo.filter(func(p_shape): return p_shape != airport.my_shape)
@@ -170,7 +176,6 @@ func _load_passenger(airport):
 		return
 
 	is_loading = true
-
 	var potential_passengers = pm.passengers.duplicate()
 	
 	for p_shape in potential_passengers:
@@ -192,15 +197,10 @@ func _load_passenger(airport):
 
 	is_loading = false
 
-
-
-
 func _draw():
 	var p_size = 6.0
 	var spacing = 13.0
 	var start_offset = Vector2(-44, 0)
-	
-
 	var p_color = Color(18.892, 18.892, 18.892, 0.475)
 
 	for i in range(cargo.size()):
@@ -208,55 +208,49 @@ func _draw():
 		var pos = start_offset + Vector2(i * spacing, 0)
 			
 		match shape:
-				GameData.ShapeType.CIRCLE:
-					draw_circle(pos, p_size, p_color, 32.0)
-					
-				GameData.ShapeType.SQUARE:
-					var s = p_size
-					var rect = Rect2(pos - Vector2(s, s), Vector2(s * 2, s * 2))
-					draw_rect(rect, p_color, true)
-					
-				GameData.ShapeType.TRIANGLE:
-					var size = p_size * 2.2
-					var h = size * sqrt(3) / 2
-					var points = PackedVector2Array([
-						pos + Vector2(0, -h/2),
-						pos + Vector2(size/2, h/2),
-						pos + Vector2(-size/2, h/2)
-					])
-					draw_colored_polygon(points, p_color)
-					
-				GameData.ShapeType.PENTAGON:
-					var size = p_size * 1.2
-					var points = PackedVector2Array()
-					for c in range(5):
-						var angle = deg_to_rad(c * 72 - 90)
-						points.append(pos + Vector2(cos(angle), sin(angle)) * size)
-					draw_colored_polygon(points, p_color)
-					
-				GameData.ShapeType.GEM:
-					var sw = p_size * 1.0
-					var sh = p_size * 1.5
-					var points = PackedVector2Array([
-						pos + Vector2(0, -sh),
-						pos + Vector2(sw, 0),
-						pos + Vector2(0, sh),
-						pos + Vector2(-sw, 0)
-					])
-					draw_colored_polygon(points, p_color)
-					
-				GameData.ShapeType.PLUS:
-					var s = p_size * 0.8
-					var t = s * 0.3
-					var points = PackedVector2Array([
-						pos + Vector2(-t, -s), pos + Vector2(t, -s), pos + Vector2(t, -t),
-						pos + Vector2(s, -t),  pos + Vector2(s, t),  pos + Vector2(t, t),
-						pos + Vector2(t, s),   pos + Vector2(-t, s), pos + Vector2(-t, t),
-						pos + Vector2(-s, t),  pos + Vector2(-s, -t), pos + Vector2(-t, -t)
-					])
-					draw_colored_polygon(points, p_color)
-				
-				
+			GameData.ShapeType.CIRCLE:
+				draw_circle(pos, p_size, p_color, 32.0)
+			GameData.ShapeType.SQUARE:
+				var s = p_size
+				var rect = Rect2(pos - Vector2(s, s), Vector2(s * 2, s * 2))
+				draw_rect(rect, p_color, true)
+			GameData.ShapeType.TRIANGLE:
+				var size = p_size * 2.2
+				var h = size * sqrt(3) / 2
+				var points = PackedVector2Array([
+					pos + Vector2(0, -h/2),
+					pos + Vector2(size/2, h/2),
+					pos + Vector2(-size/2, h/2)
+				])
+				draw_colored_polygon(points, p_color)
+			GameData.ShapeType.PENTAGON:
+				var size = p_size * 1.2
+				var points = PackedVector2Array()
+				for c in range(5):
+					var angle = deg_to_rad(c * 72 - 90)
+					points.append(pos + Vector2(cos(angle), sin(angle)) * size)
+				draw_colored_polygon(points, p_color)
+			GameData.ShapeType.GEM:
+				var sw = p_size * 1.0
+				var sh = p_size * 1.5
+				var points = PackedVector2Array([
+					pos + Vector2(0, -sh),
+					pos + Vector2(sw, 0),
+					pos + Vector2(0, sh),
+					pos + Vector2(-sw, 0)
+				])
+				draw_colored_polygon(points, p_color)
+			GameData.ShapeType.PLUS:
+				var s = p_size * 0.8
+				var t = s * 0.3
+				var points = PackedVector2Array([
+					pos + Vector2(-t, -s), pos + Vector2(t, -s), pos + Vector2(t, -t),
+					pos + Vector2(s, -t),  pos + Vector2(s, t),  pos + Vector2(t, t),
+					pos + Vector2(t, s),   pos + Vector2(-t, s), pos + Vector2(-t, t),
+					pos + Vector2(-s, t),  pos + Vector2(-s, -t), pos + Vector2(-t, -t)
+				])
+				draw_colored_polygon(points, p_color)
+
 func _take_plane():
 	GameData.lines_data[color + "_planes"].erase(self)
 	var canvas_transform = get_viewport().get_canvas_transform()
@@ -267,7 +261,6 @@ func _take_plane():
 	var found_data = _get_closest_route_data(mouse_pos_world)
 	
 	if found_data:
-		
 		modulate = modulate.lerp(found_data.color_val, 0.2)
 		modulate.a = 0.7
 		
@@ -305,7 +298,6 @@ func _get_closest_route_data(global_pos):
 
 func _drop_plane():
 	is_transport_plane = false
-	
 	scale = Vector2(0.66, 0.66) 
 	z_index = 0
 	
@@ -327,8 +319,6 @@ func _drop_plane():
 		var offset = curve.get_closest_offset(mouse_pos)
 		t = offset / curve.get_baked_length()
 		position = curve.sample_baked(offset)
-		
-		
 		forward = true 
 	else:
 		GameData.start_planes += 1

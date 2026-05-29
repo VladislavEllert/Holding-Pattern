@@ -26,10 +26,15 @@ func _input(event):
 			if GameData.is_take_plane: 
 				return
 				
+			var grabbed_handle = _is_mouse_over_any_handle(mouse_pos)
+			if grabbed_handle:
+				return
+				
 			for airport in get_tree().get_nodes_in_group("airports"):
 				if mouse_pos.distance_to(airport.global_position) < 35.0:
 					return
 		
+
 			if not is_transport_plane and mouse_pos.distance_to(global_position) < 40.0:
 				is_transport_plane = true
 				GameData.is_take_plane = true
@@ -40,6 +45,17 @@ func _input(event):
 			is_transport_plane = false
 			GameData.is_take_plane = false
 			_drop_plane()
+
+func _is_mouse_over_any_handle(mouse_pos: Vector2) -> bool:
+	for route in get_tree().get_nodes_in_group("routes"):
+		if is_instance_valid(route):
+			if is_instance_valid(route.handle_start) and route.handle_start.visible:
+				if mouse_pos.distance_to(route.handle_start.global_position) < 35.0:
+					return true
+			if is_instance_valid(route.handle_end) and route.handle_end.visible:
+				if mouse_pos.distance_to(route.handle_end.global_position) < 35.0:
+					return true
+	return false
 
 func _process(delta):
 	if is_transport_plane or !current_route or is_waiting:
@@ -56,17 +72,14 @@ func _process(delta):
 	var distance_to_target = (1.0 - t) if forward else t
 	
 	if distance_to_target < stop_plane:
-		## снижение скорости
 		var slow_factor = clamp(distance_to_target / stop_plane, 0.1, 1.0)
 		var target_brake_speed = target_speed * slow_factor
 		current_speed = lerp(current_speed, target_brake_speed, 0.1)
-	
 	
 	if forward:
 		t += t_
 		if t >= 1.0:
 			t = 1.0
-			
 			switch_to_next_route(true)
 	else:
 		t -= t_
@@ -76,7 +89,6 @@ func _process(delta):
 
 	var dist = t * baked_length
 	var new_pos = curve.sample_baked(dist)
-	
 	
 	if current_speed > 0.1 and position.distance_to(new_pos) > 0.001:
 		var target_angle = (new_pos - position).angle()

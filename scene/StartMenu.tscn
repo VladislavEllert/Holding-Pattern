@@ -76,6 +76,7 @@ flat = true
 expand_icon = true
 
 [node name="Back_down2" type="Button" parent="." unique_id=1681739533]
+z_index = 10
 offset_left = 2779.0
 offset_top = -477.0
 offset_right = 2947.0
@@ -95,11 +96,13 @@ flat = true
 expand_icon = true
 
 [node name="Back_right" type="Button" parent="." unique_id=1164054253]
+z_index = 10
 offset_left = 2209.0
 offset_top = 535.0
 offset_right = 2409.78
 offset_bottom = 703.578
 rotation = 0.601733
+mouse_filter = 1
 icon = ExtResource("8_akhuw")
 flat = true
 expand_icon = true

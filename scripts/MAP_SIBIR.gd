@@ -279,6 +279,10 @@ func _input(event):
 	if event is InputEventMouseButton:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if event.pressed:
+				var mouse_pos = get_global_mouse_position()
+				if _is_click_on_interactive_elements(mouse_pos):
+					return
+	 
 				is_drawing = true
 				set_line_stroke(true)
 			else:
@@ -286,6 +290,22 @@ func _input(event):
 				set_line_stroke(false)
 				is_drawing = false
 				stop_draw()
+
+func _is_click_on_interactive_elements(mouse_pos: Vector2) -> bool:
+	for route in get_tree().get_nodes_in_group("routes"):
+		if is_instance_valid(route):
+			if is_instance_valid(route.handle_start) and route.handle_start.visible:
+				if mouse_pos.distance_to(route.handle_start.global_position) < 55.0:
+					return true
+			if is_instance_valid(route.handle_end) and route.handle_end.visible:
+				if mouse_pos.distance_to(route.handle_end.global_position) < 55.0:
+					return true
+	 
+	for plane in get_tree().get_nodes_in_group("planes"):
+		if is_instance_valid(plane) and mouse_pos.distance_to(plane.global_position) < 40.0:
+			return true
+   
+	return false
 
 func line_draw(pos1: Vector2, pos2: Vector2):
 	if not is_instance_valid(pred_line):

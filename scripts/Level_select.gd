@@ -42,7 +42,7 @@ func _process(delta):
 		var s = clamp(1.04 - (distance / 700.0), 0.9, 1.15)
 		card.scale = card.scale.lerp(Vector2(s, s), 12.0 * delta)
 		
-		var a = clamp(1.0 - (distance / 600.0), 0.2, 1.0)
+		var a = clamp(1.0 - (distance / 600.0), 0.7, 1.0)
 		card.modulate.a = lerp(card.modulate.a, a, 12.0 * delta)
 		
 		card.z_index = int(s * 10)
