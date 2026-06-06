@@ -52,6 +52,7 @@ func _on_play_pressed():
 
 func _on_map_1_pressed():
 	SoundManager.play("click_button")
+	PycoLog.log_event_by_type("level_start", {"level": "level_1"})
 	get_tree().change_scene_to_file("res://scene/MAP_IRAN.tscn")
 	GameData.lines_data["active colors"] = ["yellow", "blue", "red"]
 	GameData.lines_data["inactive colors"] = ["light_blue", "green", "pink", "orange"]
@@ -64,6 +65,7 @@ func _on_map_1_pressed():
 
 func _on_map_2_pressed() -> void:
 	SoundManager.play("click_button")
+	PycoLog.log_event_by_type("level_start", {"level": "level_2"})
 	get_tree().change_scene_to_file("res://scene/MAP_SIBIR.tscn")
 	GameData.lines_data["active colors"] = ["light_yellow", "light_blue", "bolot"]
 	GameData.lines_data["inactive colors"] = ["full_pink", "light_orange", "turquoise", "lavanda"]
@@ -76,6 +78,7 @@ func _on_map_2_pressed() -> void:
 	
 func _on_map_3_pressed() -> void:
 	SoundManager.play("click_button")
+	PycoLog.log_event_by_type("level_start", {"level": "level_3"})
 	get_tree().change_scene_to_file("res://scene/MAP_AUSTRALIA.tscn")
 	GameData.lines_data["active colors"] = ["yellow", "blue", "red"]
 	GameData.lines_data["inactive colors"] = ["light_blue", "green", "pink", "orange"]
@@ -103,6 +106,7 @@ func _on_back_pressed():
 
 func _on_exit_pressed():
 	SoundManager.play("click_button")
+	await PycoLog.log_stop_playing()
 	get_tree().quit()
 
 

@@ -25,6 +25,8 @@ GameData="*res://scripts/GameData.gd"
 Events="*res://scripts/Event.gd"
 SoundManager="*res://scripts/SoundManager.gd"
 Settings="*res://scripts/Settings.gd"
+PycoLog="*res://addons/pycolytics/pyco_log.gd"
+AppFocus="*res://scripts/app_focus.gd"
 
 [display]
 

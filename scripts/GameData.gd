@@ -144,6 +144,7 @@ func _ready():
 	load_highscore()
 
 func save_highscore(level_key: String, new_score: int):
+	PycoLog.log_event_by_type("level_end", {"level": level_key, "score": new_score})
 	if new_score > high_scores[level_key]:
 		high_scores[level_key] = new_score
 		var config = ConfigFile.new()
